@@ -32,7 +32,7 @@ namespace Fibula {
                 ~TileMapLayer()
                 { }
 
-                void createTilesFromVector(const std::vector<unsigned int> &data);
+                void createTilesFromVector(const std::vector<int> &data);
             };
         }
     }

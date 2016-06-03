@@ -9,15 +9,15 @@ namespace Fibula {
             class TileSet
             {
             protected:
-                const unsigned int width;
-                const unsigned int height;
-                const unsigned int tileWidth;
-                const unsigned int tileHeight;
+                const int width;
+                const int height;
+                const int tileWidth;
+                const int tileHeight;
                 const SDL_Texture *texture;
 
             public:
-                TileSet(const unsigned int width, const unsigned int height,
-                        const unsigned int tileWidth, const unsigned int tileHeight,
+                TileSet(const int width, const int height,
+                        const int tileWidth, const int tileHeight,
                         const SDL_Texture *texture)
                     : width(width), height(height),
                       tileWidth(tileWidth),
@@ -25,22 +25,22 @@ namespace Fibula {
                       texture(texture)
                 { }
 
-                const unsigned int getWidth() const
+                const int getWidth() const
                 {
                     return width;
                 }
 
-                const unsigned int getHeight() const
+                const int getHeight() const
                 {
                     return height;
                 }
 
-                const unsigned int getTileWidth() const
+                const int getTileWidth() const
                 {
                     return tileWidth;
                 }
 
-                const unsigned int getTileHeight() const
+                const int getTileHeight() const
                 {
                     return tileHeight;
                 }

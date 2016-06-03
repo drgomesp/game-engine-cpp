@@ -1,11 +1,9 @@
 #include "SDLRendererAdapter.hpp"
 
+#include <vector>
 #include <SDL2/SDL_image.h>
 #include <Fibula/Graphics/TileMap/TileMap.hpp>
-#include <Fibula/Graphics/TileMap/TileMapLayer.hpp>
 #include <Fibula/Graphics/Window/Adapter/SDLWindowAdapter.hpp>
-
-#include <string>
 
 using namespace std;
 using namespace Fibula::Graphics::TileMap;
@@ -45,33 +43,14 @@ SDLRendererAdapter::SDLRendererAdapter(WindowAdapterInterface *window)
     }
 
     TileSet tileSet(512, 512, 32, 32, texture);
-    TileMapLayer ground("Ground", true, &tileSet);
-    TileMapLayer mountains("Mountains", true, &tileSet);
+    TileMapLayer bush("Bush", true, &tileSet);
 
-    vector<unsigned int> groundData = {
-        172,172,172,79,34,34,34,34,34,34,34,34,56,57,54,55,56,147,67,67,68,79,79,171,172,172,173,79,79,55,55,55,
-        172,172,172,79,34,34,34,34,34,34,146,79,79,79,79,79,79,79,79,79,79,79,155,142,172,159,189,79,79,55,55,55,
-        172,172,172,79,79,34,34,34,34,34,79,79,79,79,79,79,79,79,79,79,79,79,171,172,159,189,79,79,79,55,55,55,
-        188,188,188,79,79,79,79,34,34,34,36,172,172,143,142,157,79,79,79,79,79,79,187,159,189,79,79,79,55,55,55,55,
-        79,79,79,79,79,79,79,79,34,34,36,172,159,158,172,143,157,79,79,79,79,79,79,79,79,79,39,51,51,51,55,55,
-        79,79,79,79,79,79,79,79,79,34,36,172,143,142,172,172,143,157,79,79,79,79,79,79,79,79,79,79,79,79,79,55,
-        79,79,79,79,79,79,79,79,79,34,52,172,172,172,172,172,172,143,156,157,79,79,79,79,79,79,79,79,79,79,79,79,
-        79,79,79,79,79,79,79,79,79,34,52,172,172,172,172,172,172,159,188,189,79,79,79,79,79,171,172,172,173,79,79,79,
-        79,79,79,79,79,79,79,79,79,79,79,188,158,172,172,172,172,173,79,79,79,79,79,79,79,187,158,159,189,79,79,79,
-        79,79,79,79,79,79,79,79,79,79,79,79,171,172,172,159,188,189,79,79,79,79,79,79,79,79,171,173,79,79,79,79,
-        79,79,79,79,79,79,79,79,79,79,79,79,171,172,172,173,79,79,79,79,79,79,79,79,79,79,171,173,79,79,79,79,
-        155,142,157,79,79,79,79,79,79,79,79,79,187,188,188,189,79,79,79,79,79,79,79,79,79,79,171,173,79,79,79,79,
-        171,172,173,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,171,173,79,79,79,79,
-        171,172,143,156,157,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,187,189,79,79,79,79,
-        187,188,158,172,173,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,
-        79,79,79,188,189,79,79,79,79,79,79,155,156,156,157,79,79,79,79,79,79,79,79,79,79,79,79,79,79,79,155,156,
-        34,34,79,79,79,79,79,79,79,79,79,171,172,172,173,79,79,79,79,79,79,79,79,79,79,79,79,79,79,155,142,172,
-        34,34,34,79,79,79,79,79,79,79,79,171,172,172,173,79,79,79,79,79,79,79,79,79,79,79,79,79,79,171,172,172,
-        34,34,34,34,79,79,79,79,79,79,155,172,172,159,189,79,79,79,79,79,79,79,79,79,79,79,79,79,79,171,172,172,
-        34,34,34,34,34,34,79,79,79,79,171,172,172,173,79,79,79,79,79,79,79,79,79,79,79,79,79,79,155,142,172,172
+    vector<int> bushData = {
+        375, 376,
+        391, 392
     };
 
-    ground.createTilesFromVector(groundData);
+    bush.createTilesFromVector(bushData);
 
 
     SDL_FreeSurface(loadedSurface);
@@ -79,15 +58,15 @@ SDLRendererAdapter::SDLRendererAdapter(WindowAdapterInterface *window)
     //Clear screen
     SDL_RenderClear(this->renderer);
 
-    SDL_Rect topLeftViewport;
-    topLeftViewport.x = 0;
-    topLeftViewport.y = 0;
-    topLeftViewport.w = this->window->getWidth() / 2;
-    topLeftViewport.h = this->window->getHeight() / 2;
-    SDL_RenderSetViewport(this->renderer, &topLeftViewport);
+    int tileSetCols = tileSet.getWidth() / tileSet.getTileWidth();
+    int tileSetRows = tileSet.getHeight() / tileSet.getTileHeight();
 
-    //Render texture to screen
-    SDL_RenderCopy(this->renderer, texture, NULL, NULL );
+    for (int i = 0; i < bushData.size(); ++i) {
+        SDL_Rect clip = { 32, 480, 32, 32 };
+        SDL_Rect render = { i * 32, i * 32 / 2, 32, 32 };
+
+        SDL_RenderCopy(this->renderer, texture, &clip, &render);
+    }
 
     //Update screen
     SDL_RenderPresent(this->renderer);
