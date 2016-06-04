@@ -16,7 +16,7 @@ void Dispatcher::addListener(const std::string &eventName, std::shared_ptr<Liste
 
     registeredListeners.push_back(listener);
     std::pair<std::string, ListenerVector> pair(eventName, registeredListeners);
-    this->listeners.insert(pair);
+    this->listeners[eventName] = registeredListeners;
 }
 
 void Dispatcher::dispatchEvent(const std::string &eventName, std::shared_ptr<const Event> event) const

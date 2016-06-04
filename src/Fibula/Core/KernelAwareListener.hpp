@@ -1,9 +1,11 @@
 #ifndef FIBULA_KERNELAWARELISTENER_HPP
 #define FIBULA_KERNELAWARELISTENER_HPP
 
+#include <memory>
+
 #include <Fibula/Core/Kernel.hpp>
 #include <Fibula/EventDispatcher/ListenerInterface.hpp>
-#include <Fibula/Bridge/EventDispatcher/SDLEvent.hpp>
+#include <Fibula/Bridge/SDLEvent.hpp>
 
 namespace Fibula {
     namespace Core {

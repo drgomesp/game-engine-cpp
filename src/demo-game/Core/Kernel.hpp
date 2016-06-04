@@ -10,7 +10,10 @@ namespace Game {
         protected:
             const std::string &name;
         public:
-            Kernel(const std::string &name);
+            Kernel(const std::string &name) : name(name)
+            { }
+
+            virtual void registerListeners() override;
         };
     }
 }

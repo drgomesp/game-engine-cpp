@@ -4,14 +4,14 @@
 #include <iostream>
 
 #include <SDL2/SDL_events.h>
-#include <Fibula/Bridge/EventDispatcher/SDLEventListener.hpp>
-#include <Fibula/Bridge/EventDispatcher/SDLEvent.hpp>
-#include <Fibula/Bridge/EventDispatcher/SDLPayload.hpp>
+#include <Fibula/Bridge/SDLEventListener.hpp>
+#include <Fibula/Bridge/SDLEvent.hpp>
+#include <Fibula/Bridge/SDLPayload.hpp>
 
 namespace Game {
     namespace Listeners {
         namespace SDL {
-            class MousePositionListener : public Fibula::Bridge::EventDispatcher::SDLEventListener
+            class MousePositionListener : public Fibula::Bridge::SDLEventListener
             {
             public:
                 MousePositionListener(Fibula::Core::Kernel *kernel) : SDLEventListener(kernel)

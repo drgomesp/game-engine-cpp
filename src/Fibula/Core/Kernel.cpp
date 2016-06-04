@@ -1,52 +1,60 @@
-#include <iostream>
 #include <memory>
+#include <iostream>
 
-#include <Fibula/Graphics/Window/Adapter/SDLWindowAdapter.hpp>
-#include <Fibula/Graphics/Window/Adapter/SDLRendererAdapter.hpp>
+#include <glm/vec2.hpp>
+#include <Fibula/Core/Kernel.hpp>
 
+using namespace glm;
+using namespace std;
 using namespace Fibula::Core;
-using namespace Fibula::Graphics::Window;
-using namespace Fibula::Graphics::Window::Adapter;
 using namespace Fibula::EventDispatcher;
 
-void Kernel::addListener(const std::string &eventName, std::shared_ptr<ListenerInterface> listener)
+void Kernel::addListener(const std::string &eventName, std::shared_ptr<Listener> listener)
 {
-    this->dispatcher.addListener(eventName, listener);
+    this->dispatcher->addListener(eventName, listener);
 }
 
 void Kernel::bootstrap()
 {
-    std::shared_ptr<WindowAdapterInterface> window = std::make_shared<SDLWindowAdapter>(
+    this->dispatcher = make_shared<Dispatcher>();
+    this->window = make_shared<Window>(
         "Fibula Engine :: v1.0.0",
-        1024,
-        768,
-        this->dispatcher,
-        *this
+        vec2(1280, 768),
+        *this->dispatcher
     );
 
-    std::cout << "Engine successfully started with adapter " << window->getName() << std::endl;
+    if (NULL == this->window) {
+        throw runtime_error("Failed to create window");
+    }
 
-    this->window = window;
+    cout << "Engine successfully started" << endl;
+
     this->booted = true;
 }
 
 void Kernel::run()
 {
     this->bootstrap();
+    this->registerListeners();
 
     if (!this->booted) {
-        throw std::runtime_error("Failed to run engine because it was never booted");
+        throw runtime_error("Failed to run engine because it was never booted");
     }
 
     this->running = true;
 
+    this->window->setUp(this);
+
     while (this->running) {
-        this->window->render();
+        this->window->draw();
         this->window->handleEvents();
     }
+
+    this->window->cleanUp();
 }
 
 void Kernel::terminate()
 {
+    cout << "Kernel::terminate()" << endl;
     this->running = false;
 }

@@ -2,10 +2,9 @@
 #include <demo-game/Core/Kernel.hpp>
 
 using namespace std;
-using namespace Game::Core;
 
 int main() {
-    Kernel game("sdl");
+    Game::Core::Kernel game("sdl");
 
     try {
         game.run();

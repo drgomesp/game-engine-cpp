@@ -1,15 +1,20 @@
-#include <Fibula/Bridge/EventDispatcher/SDLEventListener.hpp>
+#include <Fibula/Bridge/SDLEventListener.hpp>
 
+#include <iostream>
+
+using namespace std;
+using namespace Fibula::Bridge;
 using namespace Fibula::EventDispatcher;
-using namespace Fibula::Bridge::EventDispatcher;
 
-LISTENER_RESPONSE SDLEventListener::handleEvent(std::shared_ptr<const Event> event) const
+LISTENER_RESPONSE SDLEventListener::handleEvent(shared_ptr<const Event> event) const
 {
     const SDLEvent *sdlEvent = dynamic_cast<const SDLEvent *>(event.get());
 
     if (!sdlEvent) {
         return LISTENER_RESPONSE::FAILURE;
     }
+
+    cout << "SDLEventListener::handleEvent()" << endl;
 
     const SDLPayload sdlPayload = sdlEvent->getPayload();
 

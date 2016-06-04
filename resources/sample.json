@@ -1,7 +1,7 @@
 { "height":2,
  "layers":[
         {
-         "data":[373, 374, 389, 390],
+         "data":[117, 118, 133, 134],
          "height":2,
          "name":"Tile Layer 1",
          "opacity":1,
@@ -24,19 +24,6 @@
          "imagewidth":512,
          "margin":0,
          "name":"mountain_landscape",
-         "spacing":0,
-         "tilecount":256,
-         "tileheight":32,
-         "tilewidth":32
-        }, 
-        {
-         "columns":16,
-         "firstgid":257,
-         "image":"mountain_landscape_grid.png",
-         "imageheight":513,
-         "imagewidth":513,
-         "margin":0,
-         "name":"mountain_landscape_grid",
          "spacing":0,
          "tilecount":256,
          "tileheight":32,
