@@ -40,7 +40,7 @@ set(SOURCE_FILES
     src/Fibula/Graphics/Window.cpp
     src/Fibula/Graphics/Window.hpp
     src/Fibula/Graphics/Drawable.hpp
-    )
+    src/Fibula/Graphics/Tile.cpp src/Fibula/Graphics/Tile.hpp src/Fibula/Graphics/TileMapLayer.cpp src/Fibula/Graphics/TileMapLayer.hpp src/Fibula/Graphics/TileSet.cpp src/Fibula/Graphics/TileSet.hpp src/Fibula/Graphics/TileMap.cpp src/Fibula/Graphics/TileMap.hpp src/Fibula/Graphics/TileSetTexture.hpp src/Fibula/Graphics/TileSetTexture.cpp src/Fibula/Graphics/TileSetTexture.hpp src/Fibula/Graphics/RendererProvider.cpp src/Fibula/Graphics/RendererProvider.hpp)
 
 add_executable(Fibula ${SOURCE_FILES})
 

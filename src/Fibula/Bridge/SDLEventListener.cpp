@@ -1,7 +1,5 @@
 #include <Fibula/Bridge/SDLEventListener.hpp>
 
-#include <iostream>
-
 using namespace std;
 using namespace Fibula::Bridge;
 using namespace Fibula::EventDispatcher;
@@ -13,8 +11,6 @@ LISTENER_RESPONSE SDLEventListener::handleEvent(shared_ptr<const Event> event) c
     if (!sdlEvent) {
         return LISTENER_RESPONSE::FAILURE;
     }
-
-    cout << "SDLEventListener::handleEvent()" << endl;
 
     const SDLPayload sdlPayload = sdlEvent->getPayload();
 

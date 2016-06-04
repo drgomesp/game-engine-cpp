@@ -10,6 +10,8 @@ namespace Game {
         protected:
             const std::string &name;
         public:
+            virtual void bootstrap() override;
+
             Kernel(const std::string &name) : name(name)
             { }
 

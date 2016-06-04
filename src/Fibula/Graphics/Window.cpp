@@ -26,13 +26,15 @@ Window::Window(const string &name, const ivec2 &size, Dispatcher &dispatcher)
     );
 
     this->innerWindow = window;
+    this->renderer = SDL_CreateRenderer(this->innerWindow, -1, SDL_RENDERER_ACCELERATED);
+
+    SDL_SetRenderDrawColor(this->renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 
     if (NULL == this->innerWindow) {
         SDL_Quit();
         throw runtime_error("Failed to create SDL window");
     }
 }
-
 
 int Window::setUp(Kernel *kernel)
 {
@@ -67,6 +69,8 @@ void Window::cleanUp()
 
 void Window::addDrawable(shared_ptr<Drawable> drawable)
 {
+    drawable->setRenderer(this->renderer);
+
     this->drawables.resize(sizeof(drawable));
     this->drawables.push_back(drawable);
 }

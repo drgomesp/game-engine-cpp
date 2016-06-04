@@ -32,14 +32,12 @@ namespace Fibula {
 
         class Window : public Drawable, public EventHandler
         {
-        private:
-            SDL_Window *innerWindow;
-            Dispatcher &dispatcher;
-
         protected:
+            SDL_Window *innerWindow;
+            SDL_Renderer *renderer;
+            Dispatcher &dispatcher;
             const string &name;
             ivec2 size;
-
             vector<shared_ptr<Drawable>> drawables;
 
         public:

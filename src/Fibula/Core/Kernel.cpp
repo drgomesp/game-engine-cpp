@@ -55,6 +55,5 @@ void Kernel::run()
 
 void Kernel::terminate()
 {
-    cout << "Kernel::terminate()" << endl;
     this->running = false;
 }
