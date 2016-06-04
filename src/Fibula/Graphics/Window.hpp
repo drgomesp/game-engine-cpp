@@ -35,7 +35,6 @@ namespace Fibula {
         {
         protected:
             SDL_Window *innerWindow;
-            SDL_Renderer *renderer;
             Dispatcher &dispatcher;
             const string name;
             ivec2 size;
@@ -44,10 +43,15 @@ namespace Fibula {
         public:
             Window(const string name, const ivec2 &size, Dispatcher &dispatcher);
 
-            virtual void draw(SDL_Renderer *renderer) override;
+            virtual void draw() override;
             virtual int setUp(Kernel *kernel);
             virtual void handleEvents() override;
-            virtual void cleanUp(SDL_Renderer *renderer) override;
+            virtual void cleanUp() override;
+
+            SDL_Window *getInnerWindow() const
+            {
+                return innerWindow;
+            }
 
             void addDrawable(shared_ptr<Drawable> drawable);
         };

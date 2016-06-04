@@ -38,7 +38,9 @@ Window::Window(const string name, const ivec2 &size, Dispatcher &dispatcher)
         throw runtime_error(SDL_GetError());
     }
 
-    SDL_SetRenderDrawColor(this->renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+    SDL_SetRenderDrawColor(this->renderer, 255, 0, 255, 255);
+    SDL_RenderClear(this->renderer);
+    SDL_RenderPresent(this->renderer);
 }
 
 int Window::setUp(Kernel *kernel)
@@ -50,10 +52,12 @@ int Window::setUp(Kernel *kernel)
     return EXIT_SUCCESS;
 }
 
-void Window::draw(SDL_Renderer *renderer)
+void Window::draw()
 {
     for (shared_ptr<Drawable> drawable : this->drawables) {
-        drawable->draw(this->renderer);
+        SDL_RenderClear(this->renderer);
+        drawable->draw();
+        SDL_RenderPresent(this->renderer);
     }
 }
 
@@ -69,22 +73,18 @@ void Window::handleEvents()
     }
 }
 
-void Window::cleanUp(SDL_Renderer *renderer)
+void Window::cleanUp()
 {
-    if (renderer == nullptr) {
-        return;
-    }
-
     SDL_DestroyWindow(this->innerWindow);
     SDL_Quit();
 }
 
 void Window::addDrawable(shared_ptr<Drawable> drawable)
 {
-    if (this->renderer == nullptr) {
-        throw runtime_error("Failed to retrieve renderer");
+    if (!drawable->ready()) {
+        drawable->setRenderer(this->renderer);
+        drawable->setWindow(this->innerWindow);
     }
 
-    drawable->setRenderer(this->renderer);
     this->drawables.push_back(drawable);
 }

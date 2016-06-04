@@ -4,22 +4,14 @@
 
 using namespace Fibula::Graphics;
 
-void TileMapLayer::draw(SDL_Renderer* renderer)
+void TileMapLayer::draw()
 {
-    if (renderer == nullptr) {
-        return;
-    }
-
-    SDL_RenderClear(renderer);
-
     for (auto it = this->tiles.begin(); it != this->tiles.end(); ++it) {
         SDL_Rect clip = { 0, 0, 512, 512 };
         SDL_Rect render = { 32, 32, 512, 512 };
 
-        SDL_RenderCopy(renderer, this->tileSet.getTexture().getTexture(), NULL, NULL);
+        SDL_RenderCopy(this->renderer, this->tileSet.getTexture().getTexture(), NULL, NULL);
     }
-
-    SDL_RenderPresent(renderer);
 }
 
 TILE_MAP_LAYER_LOAD TileMapLayer::load(vector<int> data)
@@ -36,12 +28,8 @@ TILE_MAP_LAYER_LOAD TileMapLayer::load(vector<int> data)
     return TILE_MAP_LAYER_LOAD::SUCCESS;
 }
 
-void TileMapLayer::cleanUp(SDL_Renderer *renderer)
+void TileMapLayer::cleanUp()
 {
-    if (renderer == nullptr) {
-        return;
-    }
-
     SDL_DestroyTexture(this->getTileSet().getTexture().getTexture());
-    SDL_DestroyRenderer(renderer);
+    SDL_DestroyRenderer(this->renderer);
 }

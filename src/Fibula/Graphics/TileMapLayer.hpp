@@ -36,8 +36,8 @@ namespace Fibula {
                 : name(name), size(size), visible(visible), opacity(opacity), tileSet(tileSet)
             { }
 
-            void draw(SDL_Renderer *renderer) override;
-            void cleanUp(SDL_Renderer *renderer) override;
+            void draw() override;
+            void cleanUp() override;
             TILE_MAP_LAYER_LOAD load(vector<int> data);
 
             const TileSet &getTileSet() const

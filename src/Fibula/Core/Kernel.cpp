@@ -44,11 +44,11 @@ void Kernel::run()
     this->window->setUp(this);
 
     while (this->running) {
-        this->window->draw(nullptr);
+        this->window->draw();
         this->window->handleEvents();
     }
 
-    this->window->cleanUp(nullptr);
+    this->window->cleanUp();
 }
 
 void Kernel::terminate()

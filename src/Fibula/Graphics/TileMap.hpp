@@ -24,8 +24,8 @@ namespace Fibula {
             { }
 
             void addLayer(shared_ptr<TileMapLayer> layer);
-            void draw(SDL_Renderer *renderer) override;
-            void cleanUp(SDL_Renderer *renderer) override;
+            void draw() override;
+            void cleanUp() override;
         };
     }
 }

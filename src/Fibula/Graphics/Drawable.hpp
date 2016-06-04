@@ -1,18 +1,41 @@
 #ifndef FIBULA_DRAWABLE_HPP
 #define FIBULA_DRAWABLE_HPP
 
-#include <Fibula/Graphics/RendererProvider.hpp>
-
 namespace Fibula {
     namespace Graphics {
-        class Drawable : public RendererProvider
+        class Drawable
         {
+        protected:
+            SDL_Renderer *renderer;
+            SDL_Window *window;
         public:
-            virtual void draw()
-            { }
+            virtual void draw() = 0;
+            virtual void cleanUp() = 0;
 
-            virtual void draw(SDL_Renderer *renderer = nullptr) = 0;
-            virtual void cleanUp(SDL_Renderer *renderer = nullptr) = 0;
+            SDL_Renderer *getRenderer() const
+            {
+                return renderer;
+            }
+
+            void setRenderer(SDL_Renderer *renderer)
+            {
+                Drawable::renderer = renderer;
+            }
+
+            SDL_Window *getWindow() const
+            {
+                return window;
+            }
+
+            void setWindow(SDL_Window *window)
+            {
+                Drawable::window = window;
+            }
+
+            bool ready()
+            {
+                return this->renderer == nullptr || this->window == nullptr;
+            }
         };
     }
 }

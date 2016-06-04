@@ -24,7 +24,7 @@ void Game::Core::Kernel::bootstrap()
     // Initialize the engine kernel
     EngineKernel::bootstrap();
 
-    TileSetTexture groundTexture("../../resources/mountain_landscape.png");
+    TileSetTexture groundTexture(this->window->getRenderer(), "../../resources/mountain_landscape.png");
 
     // Build the game stuff
     TileSet tileSet(groundTexture, ivec2(15, 15), ivec2(32, 32));

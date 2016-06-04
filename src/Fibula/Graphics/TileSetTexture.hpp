@@ -18,7 +18,7 @@ namespace Fibula {
             SDL_Texture *texture;
             SDL_Surface *surface;
         public:
-            TileSetTexture(const string filePath);
+            TileSetTexture(SDL_Renderer *renderer, const string filePath);
 
             SDL_Surface *getSurface() const
             {
@@ -30,8 +30,8 @@ namespace Fibula {
                 return texture;
             }
 
-            virtual void draw(SDL_Renderer *renderer) override;
-            virtual void cleanUp(SDL_Renderer *renderer) override;
+            virtual void draw() override;
+            virtual void cleanUp() override;
         };
     }
 }

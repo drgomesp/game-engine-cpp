@@ -11,16 +11,16 @@ void TileMap::addLayer(shared_ptr<TileMapLayer> layer)
     this->layers.push_back(layer);
 }
 
-void TileMap::draw(SDL_Renderer *renderer)
+void TileMap::draw()
 {
     for (shared_ptr<TileMapLayer> layer : this->layers) {
-        layer->draw(renderer);
+        layer->draw();
     }
 }
 
-void TileMap::cleanUp(SDL_Renderer *renderer)
+void TileMap::cleanUp()
 {
     for (shared_ptr<TileMapLayer> layer : this->layers) {
-        layer->cleanUp(renderer);
+        layer->cleanUp();
     }
 }
