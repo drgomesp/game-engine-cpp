@@ -25,8 +25,9 @@ namespace Fibula {
 
         class Kernel
         {
-        protected:
+        public:
             bool running = false;
+        protected:
             bool booted = false;
 
             shared_ptr<Window> window;

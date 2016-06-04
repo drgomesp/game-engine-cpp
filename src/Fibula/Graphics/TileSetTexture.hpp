@@ -14,18 +14,24 @@ namespace Fibula {
         class TileSetTexture : public Drawable
         {
         protected:
-            const string &filePath;
+            const string filePath;
             SDL_Texture *texture;
             SDL_Surface *surface;
         public:
-            TileSetTexture(const string &filePath);
+            TileSetTexture(const string filePath);
 
-        private:
-            void draw() override
-            { }
+            SDL_Surface *getSurface() const
+            {
+                return surface;
+            }
 
-            void cleanUp() override
-            { }
+            SDL_Texture *getTexture() const
+            {
+                return texture;
+            }
+
+            virtual void draw(SDL_Renderer *renderer) override;
+            virtual void cleanUp(SDL_Renderer *renderer) override;
         };
     }
 }

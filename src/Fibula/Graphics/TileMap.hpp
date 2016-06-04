@@ -18,17 +18,14 @@ namespace Fibula {
         protected:
             const string &name;
             const ivec2 size;
-            vector<unique_ptr<TileMapLayer>> layers;
+            vector<shared_ptr<TileMapLayer>> layers;
         public:
             TileMap(const string &name, const ivec2 &size) : name(name), size(size)
             { }
 
-        private:
-            virtual void draw() override
-            { }
-
-            virtual void cleanUp() override
-            { }
+            void addLayer(shared_ptr<TileMapLayer> layer);
+            void draw(SDL_Renderer *renderer) override;
+            void cleanUp(SDL_Renderer *renderer) override;
         };
     }
 }

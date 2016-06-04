@@ -7,8 +7,12 @@ namespace Fibula {
     namespace Graphics {
         class Drawable : public RendererProvider
         {
-            virtual void draw() = 0;
-            virtual void cleanUp() = 0;
+        public:
+            virtual void draw()
+            { }
+
+            virtual void draw(SDL_Renderer *renderer = nullptr) = 0;
+            virtual void cleanUp(SDL_Renderer *renderer = nullptr) = 0;
         };
     }
 }

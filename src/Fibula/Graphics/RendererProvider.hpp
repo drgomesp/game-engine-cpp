@@ -19,6 +19,11 @@ namespace Fibula {
             {
                 return renderer;
             }
+
+            inline bool knowsRenderer()
+            {
+                return this->renderer == NULL;
+            }
         };
     }
 }

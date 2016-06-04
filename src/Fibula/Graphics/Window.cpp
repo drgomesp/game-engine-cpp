@@ -7,7 +7,7 @@
 using namespace Fibula::Bridge;
 using namespace Fibula::Graphics;
 
-Window::Window(const string &name, const ivec2 &size, Dispatcher &dispatcher)
+Window::Window(const string name, const ivec2 &size, Dispatcher &dispatcher)
     : name(name), size(size), dispatcher(dispatcher)
 {
     SDL_Window *window;
@@ -26,14 +26,19 @@ Window::Window(const string &name, const ivec2 &size, Dispatcher &dispatcher)
     );
 
     this->innerWindow = window;
-    this->renderer = SDL_CreateRenderer(this->innerWindow, -1, SDL_RENDERER_ACCELERATED);
-
-    SDL_SetRenderDrawColor(this->renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 
     if (NULL == this->innerWindow) {
         SDL_Quit();
         throw runtime_error("Failed to create SDL window");
     }
+
+    this->renderer = SDL_CreateRenderer(this->innerWindow, -1, SDL_RENDERER_ACCELERATED);
+
+    if (NULL == this->renderer) {
+        throw runtime_error(SDL_GetError());
+    }
+
+    SDL_SetRenderDrawColor(this->renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 }
 
 int Window::setUp(Kernel *kernel)
@@ -41,12 +46,15 @@ int Window::setUp(Kernel *kernel)
     shared_ptr<SDLEventListener> listener = make_shared<SDLEventListener>(kernel);
     this->dispatcher.addListener("event.sdl", listener);
 
+    kernel->running = true;
     return EXIT_SUCCESS;
 }
 
-void Window::draw()
+void Window::draw(SDL_Renderer *renderer)
 {
-
+    for (shared_ptr<Drawable> drawable : this->drawables) {
+        drawable->draw(this->renderer);
+    }
 }
 
 void Window::handleEvents()
@@ -61,16 +69,22 @@ void Window::handleEvents()
     }
 }
 
-void Window::cleanUp()
+void Window::cleanUp(SDL_Renderer *renderer)
 {
+    if (renderer == nullptr) {
+        return;
+    }
+
     SDL_DestroyWindow(this->innerWindow);
     SDL_Quit();
 }
 
 void Window::addDrawable(shared_ptr<Drawable> drawable)
 {
-    drawable->setRenderer(this->renderer);
+    if (this->renderer == nullptr) {
+        throw runtime_error("Failed to retrieve renderer");
+    }
 
-    this->drawables.resize(sizeof(drawable));
+    drawable->setRenderer(this->renderer);
     this->drawables.push_back(drawable);
 }

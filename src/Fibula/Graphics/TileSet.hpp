@@ -27,6 +27,21 @@ namespace Fibula {
             TileSet(TileSetTexture &texture, const ivec2 &size, const ivec2 &tileSize)
                 : texture(texture), size(size), tileSize(tileSize)
             { }
+
+            TileSetTexture &getTexture() const
+            {
+                return texture;
+            }
+
+            const ivec2 &getSize() const
+            {
+                return size;
+            }
+
+            const ivec2 &getTileSize() const
+            {
+                return tileSize;
+            }
         };
     }
 }

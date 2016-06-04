@@ -41,16 +41,14 @@ void Kernel::run()
         throw runtime_error("Failed to run engine because it was never booted");
     }
 
-    this->running = true;
-
     this->window->setUp(this);
 
     while (this->running) {
-        this->window->draw();
+        this->window->draw(nullptr);
         this->window->handleEvents();
     }
 
-    this->window->cleanUp();
+    this->window->cleanUp(nullptr);
 }
 
 void Kernel::terminate()
