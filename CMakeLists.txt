@@ -25,7 +25,7 @@ set(SOURCE_FILES
     src/Fibula/Core/KernelAwareListener.hpp
 
     src/Fibula/EventDispatcher/Event.hpp
-    src/Fibula/EventDispatcher/ListenerInterface.hpp
+    src/Fibula/EventDispatcher/Listener.hpp
     src/Fibula/EventDispatcher/Dispatcher.cpp
     src/Fibula/EventDispatcher/Dispatcher.hpp
     src/Fibula/EventDispatcher/Payload.hpp

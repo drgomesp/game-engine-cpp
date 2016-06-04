@@ -4,12 +4,12 @@
 #include <memory>
 
 #include <Fibula/Core/Kernel.hpp>
-#include <Fibula/EventDispatcher/ListenerInterface.hpp>
+#include <Fibula/EventDispatcher/Listener.hpp>
 #include <Fibula/Bridge/SDLEvent.hpp>
 
 namespace Fibula {
     namespace Core {
-        class KernelAwareListener : public Fibula::EventDispatcher::ListenerInterface
+        class KernelAwareListener : public Fibula::EventDispatcher::Listener
         {
         protected:
             Kernel *kernel;

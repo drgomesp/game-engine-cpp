@@ -17,7 +17,7 @@ enum class LISTENER_RESPONSE
 
 namespace Fibula {
     namespace EventDispatcher {
-        class ListenerInterface
+        class Listener
         {
         protected:
             Dispatcher *dispatcher;
@@ -29,7 +29,7 @@ namespace Fibula {
                 this->dispatcher = dispatcher;
             }
 
-            virtual ~ListenerInterface() { }
+            virtual ~Listener() { }
         };
     }
 }

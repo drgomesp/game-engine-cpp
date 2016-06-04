@@ -20,7 +20,7 @@ namespace Fibula {
 
         using namespace std;
         using Dispatcher = Fibula::EventDispatcher::Dispatcher;
-        using Listener = Fibula::EventDispatcher::ListenerInterface;
+        using Listener = Fibula::EventDispatcher::Listener;
         using Window = Fibula::Graphics::Window;
 
         class Kernel

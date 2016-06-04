@@ -5,7 +5,7 @@
 
 using namespace Fibula::EventDispatcher;
 
-void Dispatcher::addListener(const std::string &eventName, std::shared_ptr<ListenerInterface> listener)
+void Dispatcher::addListener(const std::string &eventName, std::shared_ptr<Listener> listener)
 {
     listener->setDispatcher(this);
     ListenerVector registeredListeners;
@@ -26,7 +26,7 @@ void Dispatcher::dispatchEvent(const std::string &eventName, std::shared_ptr<con
     for (it; it != this->listeners.end(); ++it) {
         ListenerVector candidates = it->second;
 
-        for (std::shared_ptr<const ListenerInterface> listener: candidates) {
+        for (std::shared_ptr<const Listener> listener: candidates) {
             LISTENER_RESPONSE response = listener->handleEvent(event);
         }
     }
