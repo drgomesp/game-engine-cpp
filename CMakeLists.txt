@@ -5,6 +5,9 @@ include_directories(BEFORE src/)
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lSDL2_image -std=c++14 -Wall -W -pedantic")
 
+# Boost
+find_package(Boost REQUIRED)
+
 # GLM
 find_package(GLM REQUIRED)
 
@@ -46,17 +49,18 @@ set(SOURCE_FILES
     src/Fibula/Graphics/TileMapLayer.hpp
     src/Fibula/Graphics/TileSet.cpp
     src/Fibula/Graphics/TileSet.hpp
+    src/Fibula/Graphics/Texture.hpp
+    src/Fibula/Graphics/Texture.cpp
     src/Fibula/Graphics/TileMap.cpp
-    src/Fibula/Graphics/TileMap.hpp
-    src/Fibula/Graphics/TileSetTexture.hpp
-    src/Fibula/Graphics/TileSetTexture.cpp
-    src/Fibula/Graphics/TileSetTexture.hpp)
+    src/Fibula/Graphics/TileMap.hpp)
 
 add_executable(Fibula ${SOURCE_FILES})
 
+include_directories(${Boost_INCLUDE_DIRS})
 include_directories(${GLM_INCLUDE_DIRS})
 include_directories(${SDL2_INCLUDE_DIRS})
 
+target_link_libraries(Fibula ${Boost_LIBRARIES})
 target_link_libraries(Fibula ${SDL2_LIBRARIES})
 
 add_custom_target(valgrind)

@@ -8,8 +8,8 @@ Texture::Texture(SDL_Renderer *renderer, const string &filePath)
     : filePath(filePath)
 {
     SDL_Texture *texture;
-
     SDL_Surface *surface;
+
     surface = IMG_Load(filePath.c_str());
 
     if (surface == NULL) {
@@ -19,11 +19,19 @@ Texture::Texture(SDL_Renderer *renderer, const string &filePath)
     texture = SDL_CreateTextureFromSurface(renderer, surface);
 
     if (texture == NULL) {
-        printf("Unable to create texture %s! SDL_image Error: %s\n", filePath.c_str(),
-               IMG_GetError());
+        printf("Unable to create texture %s! SDL_image Error: %s\n", filePath.c_str(), IMG_GetError());
     }
 
     SDL_FreeSurface(surface);
 
     this->texture = texture;
+
+    SDL_SetRenderTarget(renderer, this->texture);
+}
+
+Texture::~Texture()
+{
+    if (this->texture != nullptr) {
+        SDL_DestroyTexture(this->texture);
+    }
 }

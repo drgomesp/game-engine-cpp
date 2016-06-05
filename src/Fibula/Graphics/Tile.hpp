@@ -1,5 +1,4 @@
-#ifndef FIBULA_TILE_HPP
-#define FIBULA_TILE_HPP
+#pragma once
 
 #include <glm/vec2.hpp>
 
@@ -29,6 +28,3 @@ namespace Fibula {
         };
     }
 }
-
-
-#endif //FIBULA_TILE_HPP

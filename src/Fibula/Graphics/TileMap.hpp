@@ -10,22 +10,22 @@
 namespace Fibula {
     namespace Graphics {
 
+        using namespace boost;
         using namespace glm;
-        using namespace std;
 
         class TileMap : public Drawable
         {
         protected:
             const string &name;
             const ivec2 size;
-            vector<shared_ptr<TileMapLayer>> layers;
+            ptr_vector<TileMapLayer> layers;
         public:
             TileMap(const string &name, const ivec2 &size) : name(name), size(size)
             { }
 
-            void addLayer(shared_ptr<TileMapLayer> layer);
-            void draw() override;
-            void cleanUp() override;
+            void addLayer(TileMapLayer *layer);
+            void draw(SDL_Renderer* renderer) override;
+            void cleanUp(SDL_Renderer* renderer) override;
         };
     }
 }

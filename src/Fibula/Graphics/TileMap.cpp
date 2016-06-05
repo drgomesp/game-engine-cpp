@@ -2,7 +2,7 @@
 
 using namespace Fibula::Graphics;
 
-void TileMap::addLayer(shared_ptr<TileMapLayer> layer)
+void TileMap::addLayer(TileMapLayer *layer)
 {
     if (layer->getTiles().empty()) {
         throw runtime_error("Layer does not contain tiles and can't be added to tile map");
@@ -11,16 +11,16 @@ void TileMap::addLayer(shared_ptr<TileMapLayer> layer)
     this->layers.push_back(layer);
 }
 
-void TileMap::draw()
+void TileMap::draw(SDL_Renderer* renderer)
 {
-    for (shared_ptr<TileMapLayer> layer : this->layers) {
-        layer->draw();
+    for (ptr_vector<TileMapLayer>::iterator it = this->layers.begin(); it != this->layers.end(); ++it) {
+        it->draw(renderer);
     }
 }
 
-void TileMap::cleanUp()
+void TileMap::cleanUp(SDL_Renderer* renderer)
 {
-    for (shared_ptr<TileMapLayer> layer : this->layers) {
-        layer->cleanUp();
+    for (ptr_vector<TileMapLayer>::iterator it = this->layers.begin(); it != this->layers.end(); ++it) {
+        it->cleanUp(renderer);
     }
 }

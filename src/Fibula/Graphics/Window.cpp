@@ -3,6 +3,8 @@
 #include <iostream>
 
 #include <Fibula/Bridge/SDLEventListener.hpp>
+#include <Fibula/Graphics/Texture.hpp>
+#include <Fibula/Graphics/TileSet.hpp>
 
 using namespace Fibula::Bridge;
 using namespace Fibula::Graphics;
@@ -12,7 +14,7 @@ Window::Window(const string name, const ivec2 &size, Dispatcher &dispatcher)
 {
     SDL_Window *window;
 
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+    if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
         throw runtime_error("Failed to initialize SDL");
     }
 
@@ -45,18 +47,18 @@ Window::Window(const string name, const ivec2 &size, Dispatcher &dispatcher)
 
 int Window::setUp(Kernel *kernel)
 {
-    shared_ptr<SDLEventListener> listener = make_shared<SDLEventListener>(kernel);
+    std::shared_ptr<SDLEventListener> listener = make_shared<SDLEventListener>(kernel);
     this->dispatcher.addListener("event.sdl", listener);
 
     kernel->running = true;
     return EXIT_SUCCESS;
 }
 
-void Window::draw()
+void Window::draw(SDL_Renderer* renderer)
 {
-    for (shared_ptr<Drawable> drawable : this->drawables) {
+    for (ptr_vector<Drawable>::iterator it = this->drawables.begin(); it != this->drawables.end(); ++it) {
         SDL_RenderClear(this->renderer);
-        drawable->draw();
+        it->draw(this->renderer);
         SDL_RenderPresent(this->renderer);
     }
 }
@@ -66,25 +68,25 @@ void Window::handleEvents()
     SDL_Event event;
 
     while (SDL_PollEvent(&event)) {
-        shared_ptr<SDLPayload> payload = make_shared<SDLPayload>(event);
-        shared_ptr<const SDLEvent> e = make_shared<const SDLEvent>(*payload);
+        std::shared_ptr<SDLPayload> payload = make_shared<SDLPayload>(event);
+        std::shared_ptr<const SDLEvent> e = make_shared<const SDLEvent>(*payload);
 
         this->dispatcher.dispatchEvent("event.sdl", e);
     }
 }
 
-void Window::cleanUp()
+void Window::cleanUp(SDL_Renderer* renderer)
 {
+    for (ptr_vector<Drawable>::iterator it = this->drawables.begin(); it != this->drawables.end(); ++it) {
+        it->cleanUp(renderer);
+    }
+
+    SDL_DestroyRenderer(this->renderer);
     SDL_DestroyWindow(this->innerWindow);
     SDL_Quit();
 }
 
-void Window::addDrawable(shared_ptr<Drawable> drawable)
+void Window::addDrawable(Drawable *drawable)
 {
-    if (!drawable->ready()) {
-        drawable->setRenderer(this->renderer);
-        drawable->setWindow(this->innerWindow);
-    }
-
     this->drawables.push_back(drawable);
 }

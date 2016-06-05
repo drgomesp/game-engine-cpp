@@ -5,6 +5,8 @@
 
 #include <Fibula/Graphics/Tile.hpp>
 #include <Fibula/Graphics/TileSet.hpp>
+#include <Fibula/Graphics/Drawable.hpp>
+#include <boost/ptr_container/ptr_vector.hpp>
 
 enum class TILE_MAP_LAYER_LOAD
 {
@@ -15,7 +17,7 @@ namespace Fibula {
     namespace Graphics {
 
         using namespace glm;
-        using namespace std;
+        using namespace boost;
 
         class TileMapLayer : public Drawable
         {
@@ -24,35 +26,35 @@ namespace Fibula {
             ivec2 size;
             bool visible = true;
             float opacity = 1.0f;
-            vector<shared_ptr<Tile>> tiles;
-            TileSet tileSet;
+            ptr_vector<Tile> tiles;
+            TileSet *tileSet;
         public:
             TileMapLayer(
                 const string &name,
                 const ivec2 &size,
                 bool visible,
                 float opacity,
-                const TileSet &tileSet)
+                TileSet *tileSet)
                 : name(name), size(size), visible(visible), opacity(opacity), tileSet(tileSet)
             { }
 
-            void draw() override;
-            void cleanUp() override;
+            void draw(SDL_Renderer* renderer) override;
+            void cleanUp(SDL_Renderer* renderer) override;
             TILE_MAP_LAYER_LOAD load(vector<int> data);
 
-            const TileSet &getTileSet() const
+            TileSet *getTileSet()
             {
-                return tileSet;
+                return this->tileSet;
             }
 
-            const vector<shared_ptr<Tile>> &getTiles() const
+            const ptr_vector<Tile> &getTiles() const
             {
-                return tiles;
+                return this->tiles;
             }
 
             float getOpacity() const
             {
-                return opacity;
+                return this->opacity;
             }
 
             bool isVisible() const
