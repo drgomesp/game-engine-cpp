@@ -1,7 +1,7 @@
 #ifndef FIBULA_SDLEVENTLISTENER_HPP
 #define FIBULA_SDLEVENTLISTENER_HPP
 
-#include <Fibula/Core/KernelAwareListener.hpp>
+#include "../Core/KernelAwareListener.hpp"
 
 namespace Fibula {
     namespace Bridge {

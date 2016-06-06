@@ -5,7 +5,7 @@
 #include <vector>
 #include <glm/vec2.hpp>
 
-#include <Fibula/Graphics/TileMapLayer.hpp>
+#include "TileMapLayer.hpp"
 
 namespace Fibula {
     namespace Graphics {

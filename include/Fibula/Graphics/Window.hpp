@@ -14,10 +14,10 @@ namespace Fibula {
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
 
-#include <Fibula/Core/Kernel.hpp>
-#include <Fibula/EventDispatcher/Dispatcher.hpp>
-#include <Fibula/EventDispatcher/EventHandler.hpp>
-#include <Fibula/Graphics/Drawable.hpp>
+#include "../Core/Kernel.hpp"
+#include "../EventDispatcher/Dispatcher.hpp"
+#include "../EventDispatcher/EventHandler.hpp"
+#include "Drawable.hpp"
 
 namespace Fibula {
     namespace Graphics {

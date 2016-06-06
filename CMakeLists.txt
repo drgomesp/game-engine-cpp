@@ -18,41 +18,39 @@ string(STRIP ${SDL2_LIBRARIES} SDL2_LIBRARIES)
 
 set(SOURCE_FILES
     main.cpp
+    include/Fibula/Core/Kernel.hpp
+    include/Fibula/Core/KernelAwareListener.hpp
+    include/Fibula/EventDispatcher/Event.hpp
+    include/Fibula/EventDispatcher/Listener.hpp
+    include/Fibula/EventDispatcher/Dispatcher.hpp
+    include/Fibula/EventDispatcher/Payload.hpp
+    include/Fibula/EventDispatcher/Payload.hpp
+    include/Fibula/Bridge/SDLEventListener.hpp
+    include/Fibula/Bridge/SDLEvent.hpp
+    include/Fibula/Graphics/Window.hpp
+    include/Fibula/Graphics/Drawable.hpp
+    include/Fibula/Bridge/SDLPayload.hpp
+    include/Fibula/Graphics/TileMapLayer.hpp
+    include/Fibula/Graphics/Tile.hpp
+    include/Fibula/EventDispatcher/EventHandler.hpp
+    include/Fibula/Graphics/TileSet.hpp
+    include/Fibula/Graphics/Texture.hpp
+    include/Fibula/Graphics/TileMap.hpp
+
     src/demo-game/Listeners/SDL/MousePositionListener.cpp
     src/demo-game/Listeners/SDL/MousePositionListener.hpp
     src/demo-game/Core/Kernel.cpp
     src/demo-game/Core/Kernel.cpp src/demo-game/Core/Kernel.hpp
-
     src/Fibula/Core/Kernel.cpp
-    src/Fibula/Core/Kernel.hpp
-    src/Fibula/Core/KernelAwareListener.hpp
-
-    src/Fibula/EventDispatcher/Event.hpp
-    src/Fibula/EventDispatcher/Listener.hpp
     src/Fibula/EventDispatcher/Dispatcher.cpp
-    src/Fibula/EventDispatcher/Dispatcher.hpp
-    src/Fibula/EventDispatcher/Payload.hpp
-    src/Fibula/EventDispatcher/Payload.hpp
-    src/Fibula/EventDispatcher/EventHandler.hpp
-
     src/Fibula/Bridge/SDLEventListener.cpp
-    src/Fibula/Bridge/SDLEventListener.hpp
-    src/Fibula/Bridge/SDLEvent.hpp
-    src/Fibula/Bridge/SDLPayload.hpp
-
     src/Fibula/Graphics/Window.cpp
-    src/Fibula/Graphics/Window.hpp
-    src/Fibula/Graphics/Drawable.hpp
     src/Fibula/Graphics/Tile.cpp
-    src/Fibula/Graphics/Tile.hpp
     src/Fibula/Graphics/TileMapLayer.cpp
-    src/Fibula/Graphics/TileMapLayer.hpp
     src/Fibula/Graphics/TileSet.cpp
-    src/Fibula/Graphics/TileSet.hpp
-    src/Fibula/Graphics/Texture.hpp
     src/Fibula/Graphics/Texture.cpp
     src/Fibula/Graphics/TileMap.cpp
-    src/Fibula/Graphics/TileMap.hpp)
+)
 
 add_executable(Fibula ${SOURCE_FILES})
 

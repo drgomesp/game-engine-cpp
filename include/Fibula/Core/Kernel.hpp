@@ -12,8 +12,8 @@ namespace Fibula {
 }
 
 #include <memory>
-#include <Fibula/EventDispatcher/Dispatcher.hpp>
-#include <Fibula/Graphics/Window.hpp>
+#include "../EventDispatcher/Dispatcher.hpp"
+#include "../Graphics/Window.hpp"
 
 namespace Fibula {
     namespace Core {

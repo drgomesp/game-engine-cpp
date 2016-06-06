@@ -1,7 +1,7 @@
 #ifndef FIBULA_SDLPAYLOAD_HPP
 #define FIBULA_SDLPAYLOAD_HPP
 
-#include <Fibula/EventDispatcher/Payload.hpp>
+#include "../EventDispatcher/Payload.hpp"
 #include <SDL_events.h>
 
 namespace Fibula {

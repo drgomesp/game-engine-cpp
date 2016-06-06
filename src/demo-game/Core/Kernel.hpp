@@ -1,7 +1,7 @@
 #ifndef GAME_KERNEL_HPP
 #define GAME_KERNEL_HPP
 
-#include <Fibula/Core/Kernel.hpp>
+#include "../../../include/Fibula/Core/Kernel.hpp"
 
 namespace Game {
     namespace Core {

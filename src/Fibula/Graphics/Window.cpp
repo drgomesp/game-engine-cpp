@@ -1,10 +1,10 @@
-#include "Window.hpp"
+#include "../../../include/Fibula/Graphics/Window.hpp"
 
 #include <iostream>
 
-#include <Fibula/Bridge/SDLEventListener.hpp>
-#include <Fibula/Graphics/Texture.hpp>
-#include <Fibula/Graphics/TileSet.hpp>
+#include "../../../include/Fibula/Bridge/SDLEventListener.hpp"
+#include "../../../include/Fibula/Graphics/Texture.hpp"
+#include "../../../include/Fibula/Graphics/TileSet.hpp"
 
 using namespace Fibula::Bridge;
 using namespace Fibula::Graphics;

@@ -3,7 +3,7 @@
 #include <demo-game/Core/Kernel.hpp>
 #include <demo-game/Listeners/SDL/MousePositionListener.hpp>
 
-#include <Fibula/Graphics/TileMap.hpp>
+#include "../../../include/Fibula/Graphics/TileMap.hpp"
 
 using namespace glm;
 using namespace std;
@@ -24,7 +24,7 @@ void Game::Core::Kernel::bootstrap()
     // Initialize the engine kernel
     EngineKernel::bootstrap();
 
-    Texture groundTexture(this->window->getRenderer(), "../../resources/mountain_landscape.png");
+    Texture groundTexture(this->window->getRenderer(), "resources/mountain_landscape.png");
 
     // Build the game stuff
     TileSet *tileSet = new TileSet(&groundTexture, ivec2(15, 15), ivec2(32, 32));

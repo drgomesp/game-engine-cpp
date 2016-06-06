@@ -4,7 +4,7 @@
 #include <SDL2/SDL.h>
 #include <glm/vec2.hpp>
 
-#include <Fibula/Graphics/Texture.hpp>
+#include "Texture.hpp"
 
 namespace Fibula {
     namespace Graphics {

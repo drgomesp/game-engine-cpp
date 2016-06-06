@@ -4,9 +4,9 @@
 #include <iostream>
 
 #include <SDL2/SDL_events.h>
-#include <Fibula/Bridge/SDLEventListener.hpp>
-#include <Fibula/Bridge/SDLEvent.hpp>
-#include <Fibula/Bridge/SDLPayload.hpp>
+#include "../../../../include/Fibula/Bridge/SDLEventListener.hpp"
+#include "../../../../include/Fibula/Bridge/SDLEvent.hpp"
+#include "../../../../include/Fibula/Bridge/SDLPayload.hpp"
 
 namespace Game {
     namespace Listeners {

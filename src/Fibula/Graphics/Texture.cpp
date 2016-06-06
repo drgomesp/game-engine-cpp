@@ -1,4 +1,4 @@
-#include "Texture.hpp"
+#include "../../../include/Fibula/Graphics/Texture.hpp"
 
 #include <SDL2/SDL_image.h>
 

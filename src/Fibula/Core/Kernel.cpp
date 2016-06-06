@@ -2,7 +2,7 @@
 #include <iostream>
 
 #include <glm/vec2.hpp>
-#include <Fibula/Core/Kernel.hpp>
+#include "../../../include/Fibula/Core/Kernel.hpp"
 
 using namespace glm;
 using namespace std;

@@ -2,7 +2,7 @@
 #define FIBULA_EVENT_HPP
 
 #include <string>
-#include <Fibula/EventDispatcher/Payload.hpp>
+#include "Payload.hpp"
 
 namespace Fibula {
     namespace EventDispatcher {

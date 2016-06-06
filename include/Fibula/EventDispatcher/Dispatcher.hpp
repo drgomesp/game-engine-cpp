@@ -14,9 +14,9 @@ namespace Fibula {
     }
 }
 
-#include <Fibula/EventDispatcher/Event.hpp>
-#include <Fibula/EventDispatcher/Listener.hpp>
-#include <Fibula/EventDispatcher/Payload.hpp>
+#include "Event.hpp"
+#include "Listener.hpp"
+#include "Payload.hpp"
 #include <boost/shared_ptr.hpp>
 
 namespace Fibula {

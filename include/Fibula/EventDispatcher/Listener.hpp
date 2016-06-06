@@ -8,7 +8,7 @@ namespace Fibula {
 }
 
 #include <boost/shared_ptr.hpp>
-#include <Fibula/EventDispatcher/Dispatcher.hpp>
+#include "Dispatcher.hpp"
 
 enum class LISTENER_RESPONSE
 {

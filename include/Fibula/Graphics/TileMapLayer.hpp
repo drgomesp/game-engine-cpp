@@ -3,9 +3,9 @@
 #include <vector>
 #include <glm/vec2.hpp>
 
-#include <Fibula/Graphics/Tile.hpp>
-#include <Fibula/Graphics/TileSet.hpp>
-#include <Fibula/Graphics/Drawable.hpp>
+#include "Tile.hpp"
+#include "TileSet.hpp"
+#include "Drawable.hpp"
 #include <boost/ptr_container/ptr_vector.hpp>
 
 enum class TILE_MAP_LAYER_LOAD

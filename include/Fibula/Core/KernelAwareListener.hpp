@@ -3,9 +3,9 @@
 
 #include <memory>
 
-#include <Fibula/Core/Kernel.hpp>
-#include <Fibula/EventDispatcher/Listener.hpp>
-#include <Fibula/Bridge/SDLEvent.hpp>
+#include "Kernel.hpp"
+#include "../EventDispatcher/Listener.hpp"
+#include "../Bridge/SDLEvent.hpp"
 
 namespace Fibula {
     namespace Core {

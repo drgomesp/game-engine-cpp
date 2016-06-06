@@ -1,4 +1,4 @@
-#include <Fibula/EventDispatcher/Dispatcher.hpp>
+#include "../../../include/Fibula/EventDispatcher/Dispatcher.hpp"
 #include <boost/regex.h>
 
 #include <iostream>
