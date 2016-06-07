@@ -1,12 +1,12 @@
-#ifndef FIBULA_SDLEVENTLISTENER_HPP
-#define FIBULA_SDLEVENTLISTENER_HPP
+#pragma once
 
-#include "../Core/KernelAwareListener.hpp"
+#include <Fibula/Core/KernelAwareListener.hpp>
 
 namespace Fibula {
     namespace Bridge {
 
         using namespace std;
+
         using Event = Fibula::EventDispatcher::Event;
         using Kernel = Fibula::Core::Kernel;
         using KernelAwareListener = Fibula::Core::KernelAwareListener;
@@ -21,5 +21,3 @@ namespace Fibula {
         };
     }
 }
-
-#endif //FIBULA_SDLEVENTLISTENER_HPP

@@ -1,4 +1,4 @@
-#include "../../../include/Fibula/Graphics/TileMap.hpp"
+#include <Fibula/Graphics/TileMap.hpp>
 
 using namespace Fibula::Graphics;
 
@@ -11,14 +11,14 @@ void TileMap::addLayer(shared_ptr<TileMapLayer> layer)
     this->layers.push_back(layer);
 }
 
-void TileMap::draw(SDL_Renderer* renderer)
+void TileMap::draw(SDL_Renderer *renderer)
 {
     for (shared_ptr<TileMapLayer> layer : this->layers) {
         layer->draw(renderer);
     }
 }
 
-void TileMap::cleanUp(SDL_Renderer* renderer)
+void TileMap::cleanUp(SDL_Renderer *renderer)
 {
     for (shared_ptr<TileMapLayer> layer : this->layers) {
         layer->cleanUp(renderer);

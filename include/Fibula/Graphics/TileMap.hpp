@@ -1,5 +1,4 @@
-#ifndef FIBULA_TILEMAP_HPP
-#define FIBULA_TILEMAP_HPP
+#pragma once
 
 #include <memory>
 #include <vector>
@@ -29,5 +28,3 @@ namespace Fibula {
         };
     }
 }
-
-#endif //FIBULA_TILEMAP_HPP

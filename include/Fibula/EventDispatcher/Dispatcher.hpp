@@ -1,13 +1,13 @@
-#ifndef FIBULA_DISPATCHER_HPP
-#define FIBULA_DISPATCHER_HPP
+#pragma once
 
 #include <map>
 #include <string>
-#include <boost/shared_ptr.hpp>
-#include <boost/ptr_container/ptr_vector.hpp>
+#include <vector>
 
 namespace Fibula {
     namespace EventDispatcher {
+        using namespace std;
+
         class Listener;
         typedef std::vector<std::shared_ptr<Listener>> ListenerVector;
         typedef std::map<std::string, ListenerVector> ListenerMap;
@@ -37,5 +37,3 @@ namespace Fibula {
         };
     }
 }
-
-#endif //FIBULA_DISPATCHER_HPP

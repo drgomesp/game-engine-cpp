@@ -1,8 +1,7 @@
-#ifndef FIBULA_SDLEVENT_H
-#define FIBULA_SDLEVENT_H
+#pragma once
 
-#include "SDLPayload.hpp"
-#include "../EventDispatcher/Event.hpp"
+#include <Fibula/Bridge/SDLPayload.hpp>
+#include <Fibula/EventDispatcher/Event.hpp>
 
 namespace Fibula {
     namespace Bridge {
@@ -27,5 +26,3 @@ namespace Fibula {
         };
     }
 }
-
-#endif //FIBULA_SDLEVENT_H

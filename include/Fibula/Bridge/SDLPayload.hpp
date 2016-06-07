@@ -1,8 +1,8 @@
-#ifndef FIBULA_SDLPAYLOAD_HPP
-#define FIBULA_SDLPAYLOAD_HPP
+#pragma once
 
-#include "../EventDispatcher/Payload.hpp"
 #include <SDL_events.h>
+
+#include <Fibula/EventDispatcher/Payload.hpp>
 
 namespace Fibula {
     namespace Bridge {
@@ -25,6 +25,3 @@ namespace Fibula {
         };
     }
 }
-
-
-#endif //FIBULA_SDLPAYLOAD_HPP

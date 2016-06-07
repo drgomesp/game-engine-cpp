@@ -1,5 +1,4 @@
-#ifndef FIBULA_PAYLOAD_HPP
-#define FIBULA_PAYLOAD_HPP
+#pragma once
 
 namespace Fibula {
     namespace EventDispatcher {
@@ -9,5 +8,3 @@ namespace Fibula {
         };
     }
 }
-
-#endif //FIBULA_PAYLOAD_HPP

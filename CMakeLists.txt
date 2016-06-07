@@ -20,13 +20,13 @@ set(SOURCE_FILES
     main.cpp
     include/Fibula/Core/Kernel.hpp
     include/Fibula/Core/KernelAwareListener.hpp
+    include/Fibula/Bridge/SDLEventListener.hpp
+    include/Fibula/Bridge/SDLEvent.hpp
     include/Fibula/EventDispatcher/Event.hpp
     include/Fibula/EventDispatcher/Listener.hpp
     include/Fibula/EventDispatcher/Dispatcher.hpp
     include/Fibula/EventDispatcher/Payload.hpp
     include/Fibula/EventDispatcher/Payload.hpp
-    include/Fibula/Bridge/SDLEventListener.hpp
-    include/Fibula/Bridge/SDLEvent.hpp
     include/Fibula/Graphics/Window.hpp
     include/Fibula/Graphics/Drawable.hpp
     include/Fibula/Bridge/SDLPayload.hpp
@@ -37,20 +37,21 @@ set(SOURCE_FILES
     include/Fibula/Graphics/Texture.hpp
     include/Fibula/Graphics/TileMap.hpp
 
-    src/demo-game/Listeners/SDL/MousePositionListener.cpp
-    src/demo-game/Listeners/SDL/MousePositionListener.hpp
-    src/demo-game/Core/Kernel.cpp
-    src/demo-game/Core/Kernel.cpp src/demo-game/Core/Kernel.hpp
+    src/Fibula/Bridge/SDLEventListener.cpp
     src/Fibula/Core/Kernel.cpp
     src/Fibula/EventDispatcher/Dispatcher.cpp
-    src/Fibula/Bridge/SDLEventListener.cpp
     src/Fibula/Graphics/Window.cpp
     src/Fibula/Graphics/Tile.cpp
     src/Fibula/Graphics/TileMapLayer.cpp
     src/Fibula/Graphics/TileSet.cpp
     src/Fibula/Graphics/Texture.cpp
     src/Fibula/Graphics/TileMap.cpp
-)
+
+    src/demo-game/Listeners/SDL/MousePositionListener.cpp
+    src/demo-game/Listeners/SDL/MousePositionListener.hpp
+    src/demo-game/Core/Kernel.cpp
+    src/demo-game/Core/Kernel.cpp src/demo-game/Core/Kernel.hpp
+    )
 
 add_executable(Fibula ${SOURCE_FILES})
 

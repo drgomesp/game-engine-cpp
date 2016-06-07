@@ -9,15 +9,14 @@ namespace Fibula {
 #include <string>
 #include <vector>
 
-#include <boost/shared_ptr.hpp>
 #include <glm/vec2.hpp>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
 
-#include "../Core/Kernel.hpp"
-#include "../EventDispatcher/Dispatcher.hpp"
-#include "../EventDispatcher/EventHandler.hpp"
-#include "Drawable.hpp"
+#include <Fibula/Core/Kernel.hpp>
+#include <Fibula/EventDispatcher/Dispatcher.hpp>
+#include <Fibula/EventDispatcher/EventHandler.hpp>
+#include <Fibula/Graphics/Drawable.hpp>
 
 namespace Fibula {
     namespace Graphics {

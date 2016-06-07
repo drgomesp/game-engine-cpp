@@ -1,5 +1,4 @@
-#ifndef FIBULA_TILESET_HPP
-#define FIBULA_TILESET_HPP
+#pragma once
 
 #include <SDL2/SDL.h>
 #include <glm/vec2.hpp>
@@ -51,6 +50,3 @@ namespace Fibula {
         };
     }
 }
-
-
-#endif //FIBULA_TILESET_HPP

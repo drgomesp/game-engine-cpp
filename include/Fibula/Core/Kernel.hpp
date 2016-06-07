@@ -1,5 +1,4 @@
-#ifndef FIBULA_KERNEL_HPP
-#define FIBULA_KERNEL_HPP
+#pragma once
 
 namespace Fibula {
     namespace EventDispatcher {
@@ -12,13 +11,15 @@ namespace Fibula {
 }
 
 #include <memory>
-#include "../EventDispatcher/Dispatcher.hpp"
-#include "../Graphics/Window.hpp"
+
+#include <Fibula/EventDispatcher/Dispatcher.hpp>
+#include <Fibula/Graphics/Window.hpp>
 
 namespace Fibula {
     namespace Core {
 
         using namespace std;
+
         using Dispatcher = Fibula::EventDispatcher::Dispatcher;
         using Listener = Fibula::EventDispatcher::Listener;
         using Window = Fibula::Graphics::Window;
@@ -45,5 +46,3 @@ namespace Fibula {
         };
     }
 }
-
-#endif //FIBULA_KERNEL_HPP

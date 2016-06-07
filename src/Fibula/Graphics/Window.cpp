@@ -1,10 +1,10 @@
-#include "../../../include/Fibula/Graphics/Window.hpp"
+#include <Fibula/Graphics/Window.hpp>
 
 #include <iostream>
 
-#include "../../../include/Fibula/Bridge/SDLEventListener.hpp"
-#include "../../../include/Fibula/Graphics/Texture.hpp"
-#include "../../../include/Fibula/Graphics/TileSet.hpp"
+#include <Fibula/Bridge/SDLEventListener.hpp>
+#include <Fibula/Graphics/Texture.hpp>
+#include <Fibula/Graphics/TileSet.hpp>
 
 using namespace std;
 using namespace Fibula::Bridge;
@@ -41,7 +41,9 @@ Window::Window(const string name, const ivec2 &size, Dispatcher &dispatcher)
         throw runtime_error(SDL_GetError());
     }
 
-    SDL_SetRenderDrawColor(this->renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+    glEnable(GL_TEXTURE_2D);
+
+    SDL_SetRenderDrawColor(this->renderer, 255, 255, 255, 255);
     SDL_RenderClear(this->renderer);
     SDL_RenderPresent(this->renderer);
 }

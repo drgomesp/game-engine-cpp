@@ -1,8 +1,7 @@
-#ifndef FIBULA_EVENT_HPP
-#define FIBULA_EVENT_HPP
+#pragma once
 
 #include <string>
-#include "Payload.hpp"
+#include <Fibula/EventDispatcher/Payload.hpp>
 
 namespace Fibula {
     namespace EventDispatcher {
@@ -24,5 +23,3 @@ namespace Fibula {
         };
     }
 }
-
-#endif //FIBULA_EVENT_HPP

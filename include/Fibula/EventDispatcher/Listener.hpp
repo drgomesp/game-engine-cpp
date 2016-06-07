@@ -1,5 +1,4 @@
-#ifndef FIBULA_LISTENER_HPP
-#define FIBULA_LISTENER_HPP
+#pragma once
 
 namespace Fibula {
     namespace EventDispatcher {
@@ -7,8 +6,7 @@ namespace Fibula {
     }
 }
 
-#include <boost/shared_ptr.hpp>
-#include "Dispatcher.hpp"
+#include <Fibula/EventDispatcher/Dispatcher.hpp>
 
 enum class LISTENER_RESPONSE
 {
@@ -33,5 +31,3 @@ namespace Fibula {
         };
     }
 }
-
-#endif //FIBULA_LISTENER_HPP

@@ -17,7 +17,7 @@ Texture::Texture(SDL_Renderer *renderer, const string &filePath)
         printf("Unable to load image %s! SDL_image Error: %s\n", filePath.c_str(), IMG_GetError());
     }
 
-    SDL_SetSurfaceAlphaMod(surface, SDL_ALPHA_TRANSPARENT);
+    SDL_SetColorKey(surface, SDL_TRUE, SDL_MapRGB(surface->format, 0, 0xFF, 0xFF));
 
     texture = SDL_CreateTextureFromSurface(renderer, surface);
 
