@@ -6,6 +6,7 @@
 #include "../../../include/Fibula/Graphics/Texture.hpp"
 #include "../../../include/Fibula/Graphics/TileSet.hpp"
 
+using namespace std;
 using namespace Fibula::Bridge;
 using namespace Fibula::Graphics;
 
@@ -40,7 +41,7 @@ Window::Window(const string name, const ivec2 &size, Dispatcher &dispatcher)
         throw runtime_error(SDL_GetError());
     }
 
-    SDL_SetRenderDrawColor(this->renderer, 255, 0, 255, 255);
+    SDL_SetRenderDrawColor(this->renderer, 0xFF, 0xFF, 0xFF, 0xFF);
     SDL_RenderClear(this->renderer);
     SDL_RenderPresent(this->renderer);
 }
@@ -56,9 +57,9 @@ int Window::setUp(Kernel *kernel)
 
 void Window::draw(SDL_Renderer* renderer)
 {
-    for (ptr_vector<Drawable>::iterator it = this->drawables.begin(); it != this->drawables.end(); ++it) {
+    for (shared_ptr<Drawable> drawable : this->drawables) {
         SDL_RenderClear(this->renderer);
-        it->draw(this->renderer);
+        drawable->draw(this->renderer);
         SDL_RenderPresent(this->renderer);
     }
 }
@@ -77,8 +78,8 @@ void Window::handleEvents()
 
 void Window::cleanUp(SDL_Renderer* renderer)
 {
-    for (ptr_vector<Drawable>::iterator it = this->drawables.begin(); it != this->drawables.end(); ++it) {
-        it->cleanUp(renderer);
+    for (shared_ptr<Drawable> drawable : this->drawables) {
+        drawable->cleanUp(renderer);
     }
 
     SDL_DestroyRenderer(this->renderer);
@@ -86,7 +87,7 @@ void Window::cleanUp(SDL_Renderer* renderer)
     SDL_Quit();
 }
 
-void Window::addDrawable(Drawable *drawable)
+void Window::addDrawable(shared_ptr<Drawable> drawable)
 {
     this->drawables.push_back(drawable);
 }

@@ -2,11 +2,11 @@
 
 #include <vector>
 #include <glm/vec2.hpp>
+#include <SDL2/SDL.h>
 
-#include "Tile.hpp"
-#include "TileSet.hpp"
-#include "Drawable.hpp"
-#include <boost/ptr_container/ptr_vector.hpp>
+#include <Fibula/Graphics/Drawable.hpp>
+#include <Fibula/Graphics/Tile.hpp>
+#include <Fibula/Graphics/TileSet.hpp>
 
 enum class TILE_MAP_LAYER_LOAD
 {
@@ -16,8 +16,9 @@ enum class TILE_MAP_LAYER_LOAD
 namespace Fibula {
     namespace Graphics {
 
+        using namespace std;
+        using namespace Fibula::Graphics;
         using namespace glm;
-        using namespace boost;
 
         class TileMapLayer : public Drawable
         {
@@ -26,28 +27,28 @@ namespace Fibula {
             ivec2 size;
             bool visible = true;
             float opacity = 1.0f;
-            ptr_vector<Tile> tiles;
-            TileSet *tileSet;
+            vector<shared_ptr<Tile>> tiles;
+            shared_ptr<TileSet> tileSet;
         public:
             TileMapLayer(
                 const string &name,
                 const ivec2 &size,
                 bool visible,
                 float opacity,
-                TileSet *tileSet)
-                : name(name), size(size), visible(visible), opacity(opacity), tileSet(tileSet)
+                shared_ptr<TileSet> tileSet
+            ) : name(name), size(size), visible(visible), opacity(opacity), tileSet(tileSet)
             { }
 
-            void draw(SDL_Renderer* renderer) override;
-            void cleanUp(SDL_Renderer* renderer) override;
+            void draw(SDL_Renderer *renderer) override;
+            void cleanUp(SDL_Renderer *renderer) override;
             TILE_MAP_LAYER_LOAD load(vector<int> data);
 
-            TileSet *getTileSet()
+            shared_ptr<TileSet> getTileSet()
             {
                 return this->tileSet;
             }
 
-            const ptr_vector<Tile> &getTiles() const
+            const vector<shared_ptr<Tile>> &getTiles() const
             {
                 return this->tiles;
             }

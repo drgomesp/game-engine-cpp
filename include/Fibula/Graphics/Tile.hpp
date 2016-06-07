@@ -10,11 +10,18 @@ namespace Fibula {
         class Tile
         {
         protected:
-            const ivec2 size;
+            const int id;
             const ivec2 position;
+            const ivec2 size;
         public:
-            Tile(const ivec2 &size, const ivec2 &position) : size(size), position(position)
+            Tile(const int id, const ivec2 &size, const ivec2 &position)
+                : id(id), size(size), position(position)
             { }
+
+            const int getId() const
+            {
+                return id;
+            }
 
             inline const ivec2 &getSize()
             {

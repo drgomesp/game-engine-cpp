@@ -1,5 +1,7 @@
 #pragma once
 
+#include <SDL2/SDL.h>
+
 namespace Fibula {
     namespace Graphics {
         class Drawable

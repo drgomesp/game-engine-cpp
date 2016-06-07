@@ -1,7 +1,7 @@
 { "height":4,
  "layers":[
         {
-         "data":[121, 122, 122, 123, 137, 138, 138, 139, 137, 138, 138, 139, 153, 154, 154, 155],
+         "data":[113, 114, 115, 116, 129, 130, 131, 132, 145, 146, 147, 148, 161, 162, 163, 164],
          "height":4,
          "name":"Tile Layer 1",
          "opacity":1,
@@ -19,15 +19,16 @@
         {
          "columns":16,
          "firstgid":1,
-         "image":"mountain_landscape_grid.png",
-         "imageheight":513,
-         "imagewidth":513,
+         "image":"mountain_landscape.png",
+         "imageheight":512,
+         "imagewidth":512,
          "margin":0,
-         "name":"mountain_landscape_grid",
+         "name":"1",
          "spacing":0,
          "tilecount":256,
          "tileheight":32,
-         "tilewidth":32
+         "tilewidth":32,
+         "transparentcolor":"#ff00ff"
         }],
  "tilewidth":32,
  "version":1,

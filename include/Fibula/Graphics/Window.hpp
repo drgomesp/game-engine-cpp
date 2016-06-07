@@ -22,13 +22,13 @@ namespace Fibula {
 namespace Fibula {
     namespace Graphics {
 
-        using namespace boost;
+        using namespace std;
         using namespace glm;
 
         using Dispatcher = Fibula::EventDispatcher::Dispatcher;
         using EventHandler = Fibula::EventDispatcher::EventHandler;
         using Kernel = Fibula::Core::Kernel;
-        using DrawableVector = ptr_vector<Drawable>;
+        using DrawableVector = vector<shared_ptr<Drawable>>;
 
         class Window : public Drawable, public EventHandler
         {
@@ -58,7 +58,7 @@ namespace Fibula {
                 return this->renderer;
             }
 
-            void addDrawable(Drawable *drawable);
+            void addDrawable(shared_ptr<Drawable> drawable);
         };
     }
 

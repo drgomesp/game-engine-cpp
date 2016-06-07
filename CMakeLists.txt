@@ -1,15 +1,15 @@
 cmake_minimum_required(VERSION 3.4)
 project(Fibula)
 
-include_directories(BEFORE src/)
+include_directories(BEFORE include/ src/)
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lSDL2_image -std=c++14 -Wall -W -pedantic")
-
-# Boost
-find_package(Boost REQUIRED)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lSDL2_image -framework OpenGL -std=c++14 -Wall -W -pedantic")
 
 # GLM
 find_package(GLM REQUIRED)
+
+# GLEW
+find_package(GLEW REQUIRED)
 
 # SDL 2
 find_package(SDL2 REQUIRED)
@@ -54,11 +54,11 @@ set(SOURCE_FILES
 
 add_executable(Fibula ${SOURCE_FILES})
 
-include_directories(${Boost_INCLUDE_DIRS})
+include_directories(${GLEW_INCLUDE_DIRS})
 include_directories(${GLM_INCLUDE_DIRS})
 include_directories(${SDL2_INCLUDE_DIRS})
 
-target_link_libraries(Fibula ${Boost_LIBRARIES})
+target_link_libraries(Fibula ${GLEW_LIBRARIES})
 target_link_libraries(Fibula ${SDL2_LIBRARIES})
 
 add_custom_target(valgrind)

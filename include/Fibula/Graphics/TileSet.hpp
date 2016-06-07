@@ -4,7 +4,7 @@
 #include <SDL2/SDL.h>
 #include <glm/vec2.hpp>
 
-#include "Texture.hpp"
+#include <Fibula/Graphics/Texture.hpp>
 
 namespace Fibula {
     namespace Graphics {
@@ -14,17 +14,24 @@ namespace Fibula {
         class TileSet
         {
         protected:
-            Texture *texture;
+            shared_ptr<Texture> texture;
             const ivec2 size;
             const ivec2 tileSize;
+            const ivec2 pixelSize;
         public:
-            TileSet(Texture *texture, const ivec2 &size, const ivec2 &tileSize)
-                : texture(texture), size(size), tileSize(tileSize)
+            TileSet(
+                shared_ptr<Texture> texture,
+                const ivec2 &size,
+                const ivec2 &tileSize,
+                const ivec2 &pixelSize
+            ) : texture(texture), size(size), tileSize(tileSize), pixelSize(pixelSize)
             { }
 
-            Texture *getTexture() const
+            ivec2 getTileCoordinates(int position);
+
+            const shared_ptr<Texture> &getTexture() const
             {
-                return this->texture;
+                return texture;
             }
 
             const ivec2 &getSize() const
@@ -35,6 +42,11 @@ namespace Fibula {
             const ivec2 &getTileSize() const
             {
                 return this->tileSize;
+            }
+
+            const ivec2 &getPixelSize() const
+            {
+                return pixelSize;
             }
         };
     }
