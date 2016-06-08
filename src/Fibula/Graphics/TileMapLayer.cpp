@@ -9,7 +9,8 @@ using namespace Fibula::Graphics;
 void TileMapLayer::draw(SDL_Renderer* renderer)
 {
     for (shared_ptr<Tile> tile : this->tiles) {
-        int position = tile->getId();
+        // Note(Daniel): Tiled Map Editor implementation detail (start from 1 instead of 0)
+        int position = tile->getId() - 1;
 
         int tileWidth = tile->getSize().x;
         int tileHeight = tile->getSize().y;
@@ -32,8 +33,8 @@ TILE_MAP_LAYER_LOAD TileMapLayer::load(vector<int> data)
 
     vector<int>::iterator it = data.begin();
 
-    for (size_t c = 0; c < this->size.x; ++c) {
-        for (size_t r = 0; r < this->size.y; ++r, ++it) {
+    for (int c = 0; c < this->size.x; ++c) {
+        for (int r = 0; r < this->size.y; ++r, ++it) {
             shared_ptr<Tile> tile = make_shared<Tile>(*it, ivec2(tWidth, tHeight), ivec2(c, r));
             this->tiles.push_back(tile);
         }
@@ -44,5 +45,5 @@ TILE_MAP_LAYER_LOAD TileMapLayer::load(vector<int> data)
 
 void TileMapLayer::cleanUp(SDL_Renderer* renderer)
 {
-//    SDL_DestroyTexture(this->getTileSet()->getTexture()->getSDLTexture());
+    SDL_DestroyTexture(this->getTileSet()->getTexture()->getSDLTexture());
 }

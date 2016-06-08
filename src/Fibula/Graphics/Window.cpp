@@ -10,7 +10,7 @@ using namespace std;
 using namespace Fibula::Bridge;
 using namespace Fibula::Graphics;
 
-Window::Window(const string name, const ivec2 &size, Dispatcher &dispatcher)
+Window::Window(const string &name, const ivec2 &size, Dispatcher &dispatcher)
     : name(name), size(size), dispatcher(dispatcher)
 {
     SDL_Window *window;
@@ -42,6 +42,8 @@ Window::Window(const string name, const ivec2 &size, Dispatcher &dispatcher)
     }
 
     glEnable(GL_TEXTURE_2D);
+
+    SDL_GLContext context = SDL_GL_CreateContext(this->innerWindow);
 
     SDL_SetRenderDrawColor(this->renderer, 255, 255, 255, 255);
     SDL_RenderClear(this->renderer);

@@ -15,10 +15,10 @@ namespace Fibula {
             const ivec2 size;
         public:
             Tile(const int id, const ivec2 &size, const ivec2 &position)
-                : id(id), size(size), position(position)
+                : id(id), position(position), size(size)
             { }
 
-            const int getId() const
+            int getId()
             {
                 return id;
             }

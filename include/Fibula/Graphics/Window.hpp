@@ -35,12 +35,12 @@ namespace Fibula {
             SDL_Window *innerWindow;
             SDL_Renderer *renderer;
             Dispatcher &dispatcher;
-            const std::string name;
+            const std::string &name;
             ivec2 size;
             DrawableVector drawables;
 
         public:
-            Window(const std::string name, const ivec2 &size, Dispatcher &dispatcher);
+            Window(const std::string &name, const ivec2 &size, Dispatcher &dispatcher);
 
             virtual int setUp(Kernel *kernel);
             virtual void handleEvents() override;
