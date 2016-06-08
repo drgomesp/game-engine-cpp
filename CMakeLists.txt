@@ -36,6 +36,10 @@ set(SOURCE_FILES
     include/Fibula/Graphics/TileSet.hpp
     include/Fibula/Graphics/Texture.hpp
     include/Fibula/Graphics/TileMap.hpp
+    include/Fibula/Graphics/Sprite.hpp
+    include/Fibula/Graphics/Transformable.hpp
+    include/Fibula/Graphics/Transform.hpp
+    include/Fibula/Math/Vector2.hpp
 
     src/Fibula/Bridge/SDLEventListener.cpp
     src/Fibula/Core/Kernel.cpp

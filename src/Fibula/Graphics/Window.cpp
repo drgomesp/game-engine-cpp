@@ -72,7 +72,7 @@ void Window::handleEvents()
 
     while (SDL_PollEvent(&event)) {
         std::shared_ptr<SDLPayload> payload = make_shared<SDLPayload>(event);
-        std::shared_ptr<const SDLEvent> e = make_shared<const SDLEvent>(*payload);
+        std::shared_ptr<SDLEvent> e = make_shared<SDLEvent>(*payload);
 
         this->dispatcher.dispatchEvent("event.sdl", e);
     }
