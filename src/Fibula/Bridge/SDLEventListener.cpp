@@ -1,4 +1,6 @@
-#include "../../../include/Fibula/Bridge/SDLEventListener.hpp"
+#include <Fibula/Bridge/SDLEventListener.hpp>
+
+#include <Fibula/Bridge/SDLEvent.hpp>
 
 using namespace std;
 using namespace Fibula::Bridge;

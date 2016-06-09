@@ -2,13 +2,11 @@
 
 using namespace Fibula::Graphics;
 
-void TileMap::addLayer(shared_ptr<TileMapLayer> layer)
+void TileMap::addLayer(shared_ptr<TileMapLayer> layer, vector<int> data)
 {
-    if (layer->getTiles().empty()) {
-        throw runtime_error("Layer does not contain tiles and can't be added to tile map");
+    if (layer->load(data)) {
+        this->layers.push_back(layer);
     }
-
-    this->layers.push_back(layer);
 }
 
 void TileMap::draw(SDL_Renderer *renderer)

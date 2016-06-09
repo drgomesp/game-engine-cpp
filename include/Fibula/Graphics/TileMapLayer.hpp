@@ -37,7 +37,7 @@ namespace Fibula {
 
             void draw(SDL_Renderer *renderer) override;
             void cleanUp(SDL_Renderer *renderer) override;
-            void load(vector<int> data);
+            bool load(vector<int> data);
 
             shared_ptr<TileSet> getTileSet()
             {
@@ -47,16 +47,6 @@ namespace Fibula {
             const TileContainer &getTiles() const
             {
                 return tiles;
-            }
-
-            float getOpacity() const
-            {
-                return this->opacity;
-            }
-
-            bool isVisible() const
-            {
-                return visible;
             }
         };
     }

@@ -5,15 +5,17 @@
 
 namespace Fibula {
     namespace Bridge {
+
         using Event = Fibula::EventDispatcher::Event;
 
         class SDLEvent : public Event
         {
-        private:
+        protected:
             const SDLPayload &payload;
         public:
             SDLEvent(const SDLPayload &payload)
-                : Event(payload), payload(payload)
+                : Event(payload),
+                  payload(payload)
             { }
 
             const SDLPayload &getPayload() const

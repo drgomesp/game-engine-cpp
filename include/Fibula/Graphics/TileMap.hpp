@@ -24,7 +24,7 @@ namespace Fibula {
             TileMap(const string &name, const ivec2 &size) : name(name), size(size)
             { }
 
-            void addLayer(shared_ptr<TileMapLayer> layer);
+            void addLayer(shared_ptr<TileMapLayer> layer, vector<int> data);
             void draw(SDL_Renderer* renderer) override;
             void cleanUp(SDL_Renderer* renderer) override;
 

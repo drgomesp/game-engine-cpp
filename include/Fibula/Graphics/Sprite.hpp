@@ -16,21 +16,6 @@ namespace Fibula {
             Sprite(const shared_ptr<Texture> &texture, const SDL_Rect &clipping, const ivec2 &position)
                 : texture(texture), clipping(clipping), position(position)
             { }
-
-            const shared_ptr<Texture> &getTexture() const
-            {
-                return texture;
-            }
-
-            const SDL_Rect &getClipping() const
-            {
-                return clipping;
-            }
-
-            const ivec2 &getPosition() const
-            {
-                return position;
-            }
         };
     }
 }

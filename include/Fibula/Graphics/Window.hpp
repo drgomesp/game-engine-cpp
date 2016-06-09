@@ -34,13 +34,12 @@ namespace Fibula {
         class Window : public Drawable, public EventHandler
         {
         protected:
+            ivec2 size;
+            const std::string &name;
             SDL_Window *innerWindow;
             SDL_Renderer *renderer;
             Dispatcher &dispatcher;
-            const std::string &name;
-            ivec2 size;
             DrawableVector drawables;
-            shared_ptr<Camera> camera;
 
         public:
             Window(const std::string &name, const ivec2 &size, Dispatcher &dispatcher);
@@ -51,11 +50,6 @@ namespace Fibula {
             virtual void update();
             virtual void draw(SDL_Renderer* renderer = nullptr) override;
             virtual void cleanUp(SDL_Renderer* renderer = nullptr) override;
-
-            SDL_Window *getInnerWindow() const
-            {
-                return this->innerWindow;
-            }
 
             SDL_Renderer *getRenderer() const
             {

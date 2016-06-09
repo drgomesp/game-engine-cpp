@@ -14,6 +14,7 @@ using namespace Fibula::EventDispatcher;
 void Kernel::bootstrap()
 {
     this->dispatcher = make_shared<Dispatcher>();
+
     this->window = make_shared<Window>(
         "Fibula Engine :: v1.0.0",
         vec2(1280, 768),
@@ -42,7 +43,7 @@ void Kernel::run()
 
     while (this->running) {
         FPS::calculate(this->fps, this->frameTime);
-        printf("FPS: %f\n", this->fps);
+//        printf("FPS: %f\n", this->fps);
 
         this->handleEvents();
         this->handleInputs();

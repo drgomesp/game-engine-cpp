@@ -9,7 +9,8 @@ namespace Fibula {
 
         using namespace std;
 
-        class Payload {
+        class Payload
+        {
         protected:
             Cargo *cargo;
         public:

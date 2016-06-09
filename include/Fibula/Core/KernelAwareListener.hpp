@@ -1,14 +1,14 @@
 #pragma once
 
-#include <memory>
-
 #include <Fibula/Core/Kernel.hpp>
 #include <Fibula/EventDispatcher/Listener.hpp>
-#include <Fibula/Bridge/SDLEvent.hpp>
 
 namespace Fibula {
     namespace Core {
-        class KernelAwareListener : public Fibula::EventDispatcher::Listener
+
+        using Listener = Fibula::EventDispatcher::Listener;
+
+        class KernelAwareListener : public Listener
         {
         protected:
             Kernel *kernel;

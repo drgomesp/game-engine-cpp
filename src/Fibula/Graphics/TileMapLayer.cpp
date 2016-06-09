@@ -13,7 +13,7 @@ void TileMapLayer::draw(SDL_Renderer* renderer)
     }
 }
 
-void TileMapLayer::load(vector<int> data)
+bool TileMapLayer::load(vector<int> data)
 {
     vector<int>::iterator it = data.begin();
 
@@ -40,6 +40,8 @@ void TileMapLayer::load(vector<int> data)
             this->tiles.push_back(tile);
         }
     }
+
+    return true;
 }
 
 void TileMapLayer::cleanUp(SDL_Renderer* renderer)

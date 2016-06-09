@@ -3,6 +3,8 @@
 #include <iostream>
 
 #include <Fibula/Bridge/SDLEventListener.hpp>
+#include <Fibula/Bridge/SDLEvent.hpp>
+#include <Fibula/Bridge/SDLPayload.hpp>
 #include <Fibula/Graphics/Texture.hpp>
 #include <Fibula/Graphics/TileSet.hpp>
 
