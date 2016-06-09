@@ -25,7 +25,7 @@ void Game::Core::Kernel::bootstrap()
     // Initialize the engine kernel
     EngineKernel::bootstrap();
 
-    shared_ptr<Texture> groundTexture = make_shared<Texture>(this->window->getRenderer(), "resources/mountain_landscape.png");
+    shared_ptr<Texture> groundTexture = make_shared<Texture>(this->window->getRenderer(), "resources/mountain_landscape_grid.png");
 
     // Build the game stuff
     shared_ptr<TileSet> tileSet = make_shared<TileSet>(groundTexture, ivec2(16, 16), ivec2(32, 32), ivec2(512, 512));

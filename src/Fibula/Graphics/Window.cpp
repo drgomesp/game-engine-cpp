@@ -14,31 +14,18 @@ using namespace Fibula::Graphics;
 Window::Window(const string &name, const ivec2 &size, Dispatcher &dispatcher)
     : name(name), size(size), dispatcher(dispatcher)
 {
-    /* Initialize the library */
-    if (!glfwInit()) {
-        throw runtime_error("Failed to initialize GLFW");
-    }
-
-    /* Anti-aliasing */
-    glfwWindowHint(GLFW_SAMPLES, 4);
-
-    /* OpenGL 4.1 */
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
-
-    /* We don't want the old OpenGL */
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-#if __APPLE__
-    /* Make MacOS happy; should not be needed */
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-#endif
-
-    SDL_Window *window;
-
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
         throw runtime_error("Failed to initialize SDL");
     }
+
+    SDL_Window *window;
+
+    // Use OpenGL 4.1
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG);
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
     window = SDL_CreateWindow(
         name.c_str(),
@@ -62,12 +49,19 @@ Window::Window(const string &name, const ivec2 &size, Dispatcher &dispatcher)
         throw runtime_error(SDL_GetError());
     }
 
-    glEnable(GL_TEXTURE_2D);
     SDL_GLContext context = SDL_GL_CreateContext(this->innerWindow);
 
     if (NULL == context) {
         SDL_Quit();
         throw runtime_error("Failed to create OpenGL context");
+    }
+
+    printf("OpenGL context successfully initialized :: %s\n", glGetString(GL_VERSION));
+
+    GLenum error = glewInit();
+
+    if (GLEW_OK != error) {
+        throw runtime_error("Failed to initialize GLEW");
     }
 
     SDL_SetRenderDrawColor(this->renderer, 255, 255, 255, 255);

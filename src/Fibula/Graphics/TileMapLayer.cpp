@@ -13,14 +13,14 @@ void TileMapLayer::draw(SDL_Renderer* renderer)
     }
 }
 
-TILE_MAP_LAYER_LOAD TileMapLayer::load(vector<int> data)
+void TileMapLayer::load(vector<int> data)
 {
     vector<int>::iterator it = data.begin();
 
     for (int c = 0; c < this->size.x; ++c) {
         for (int r = 0; r < this->size.y; ++r, ++it) {
             // Note(Daniel): Tiled Map Editor detail (start from 1 instead of 0)
-            ivec2 coordinates = this->tileSet->getCoordinatesFromTileId(*it - 1);
+            ivec2 coordinates = this->tileSet->getCoordinatesFromId(*it - 1);
 
             SDL_Rect clipping = {
                 coordinates.x,
@@ -40,8 +40,6 @@ TILE_MAP_LAYER_LOAD TileMapLayer::load(vector<int> data)
             this->tiles.push_back(tile);
         }
     }
-
-    return TILE_MAP_LAYER_LOAD::SUCCESS;
 }
 
 void TileMapLayer::cleanUp(SDL_Renderer* renderer)

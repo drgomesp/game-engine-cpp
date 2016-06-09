@@ -28,6 +28,8 @@ namespace Fibula {
         {
         public:
             bool running = false;
+            float fps;
+            float frameTime;
         protected:
             bool booted = false;
 

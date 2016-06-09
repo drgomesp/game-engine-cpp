@@ -3,7 +3,7 @@
 using namespace glm;
 using namespace Fibula::Graphics;
 
-ivec2 TileSet::getCoordinatesFromTileId(int id)
+ivec2 TileSet::getCoordinatesFromId(int id)
 {
     ivec2 coordinates(0, 0);
     int tilesPerColumn = this->pixelSize.x / this->tileSize.x;
@@ -17,8 +17,7 @@ ivec2 TileSet::getCoordinatesFromTileId(int id)
     return coordinates;
 }
 
-// TODO
-int TileSet::getIdFromTileCoordinates(const ivec2 &coordinates)
+int TileSet::getIdFromCoordinates(const ivec2 &coordinates)
 {
     return -1;
 }

@@ -10,7 +10,6 @@ namespace Fibula {
 #include <vector>
 
 #include <GL/glew.h>
-#include <GLFW/glfw3.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
 #include <glm/vec2.hpp>

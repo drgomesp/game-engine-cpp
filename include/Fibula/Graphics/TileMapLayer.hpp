@@ -8,17 +8,13 @@
 #include <Fibula/Graphics/Tile.hpp>
 #include <Fibula/Graphics/TileSet.hpp>
 
-enum class TILE_MAP_LAYER_LOAD
-{
-    SUCCESS = 0, FAILURE = -1
-};
-
 namespace Fibula {
     namespace Graphics {
 
         using namespace std;
-        using namespace Fibula::Graphics;
         using namespace glm;
+        using namespace Fibula::Graphics;
+        using TileContainer = vector<shared_ptr<Tile>>;
 
         class TileMapLayer : public Drawable
         {
@@ -27,7 +23,7 @@ namespace Fibula {
             ivec2 size;
             bool visible = true;
             float opacity = 1.0f;
-            vector<shared_ptr<Tile>> tiles;
+            TileContainer tiles;
             shared_ptr<TileSet> tileSet;
         public:
             TileMapLayer(
@@ -41,16 +37,16 @@ namespace Fibula {
 
             void draw(SDL_Renderer *renderer) override;
             void cleanUp(SDL_Renderer *renderer) override;
-            TILE_MAP_LAYER_LOAD load(vector<int> data);
+            void load(vector<int> data);
 
             shared_ptr<TileSet> getTileSet()
             {
                 return this->tileSet;
             }
 
-            const vector<shared_ptr<Tile>> &getTiles() const
+            const TileContainer &getTiles() const
             {
-                return this->tiles;
+                return tiles;
             }
 
             float getOpacity() const

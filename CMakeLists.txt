@@ -3,7 +3,7 @@ project(Fibula)
 
 include_directories(BEFORE include/ src/)
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lSDL2_image -framework OpenGl -lGLEW -lglfw3 -std=c++14 -Wall -W -pedantic")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -lSDL2_image -framework OpenGl -lGLEW -std=c++14 -Wall -W -pedantic")
 
 # GLM
 find_package(GLM REQUIRED)
@@ -54,7 +54,7 @@ set(SOURCE_FILES
     src/demo-game/Listeners/SDL/MousePositionListener.hpp
     src/demo-game/Core/Kernel.cpp
     src/demo-game/Core/Kernel.cpp src/demo-game/Core/Kernel.hpp
-    )
+    include/Fibula/Graphics/Camera.hpp include/Fibula/Debug/FPSCounter.hpp src/Fibula/Debug/FPSCounter.cpp)
 
 add_executable(Fibula ${SOURCE_FILES})
 
