@@ -7,7 +7,7 @@
 namespace Fibula {
     namespace Bridge {
         using Payload = Fibula::EventDispatcher::Payload;
-        
+
         class SDLPayload : public Payload
         {
             const SDL_Event &originalEvent;

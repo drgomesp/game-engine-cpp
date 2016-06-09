@@ -8,11 +8,32 @@
 
 using namespace std;
 using namespace Fibula::Bridge;
+using namespace Fibula::EventDispatcher;
 using namespace Fibula::Graphics;
 
 Window::Window(const string &name, const ivec2 &size, Dispatcher &dispatcher)
     : name(name), size(size), dispatcher(dispatcher)
 {
+    /* Initialize the library */
+    if (!glfwInit()) {
+        throw runtime_error("Failed to initialize GLFW");
+    }
+
+    /* Anti-aliasing */
+    glfwWindowHint(GLFW_SAMPLES, 4);
+
+    /* OpenGL 4.1 */
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+
+    /* We don't want the old OpenGL */
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+#if __APPLE__
+    /* Make MacOS happy; should not be needed */
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+#endif
+
     SDL_Window *window;
 
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
@@ -42,8 +63,12 @@ Window::Window(const string &name, const ivec2 &size, Dispatcher &dispatcher)
     }
 
     glEnable(GL_TEXTURE_2D);
-
     SDL_GLContext context = SDL_GL_CreateContext(this->innerWindow);
+
+    if (NULL == context) {
+        SDL_Quit();
+        throw runtime_error("Failed to create OpenGL context");
+    }
 
     SDL_SetRenderDrawColor(this->renderer, 255, 255, 255, 255);
     SDL_RenderClear(this->renderer);
@@ -73,10 +98,17 @@ void Window::handleEvents()
     SDL_Event event;
 
     while (SDL_PollEvent(&event)) {
-        std::shared_ptr<SDLPayload> payload = make_shared<SDLPayload>(event);
-        std::shared_ptr<SDLEvent> e = make_shared<SDLEvent>(*payload);
+        for (shared_ptr<Drawable> drawable : this->drawables) {
+            std::shared_ptr<SDLPayload> payload = make_shared<SDLPayload>(event);
+            if (Cargo *cargo = dynamic_cast<Cargo *>(drawable.get())) {
+                payload->setCargo(cargo);
+            } else {
+                payload->setCargo(nullptr);
+            }
 
-        this->dispatcher.dispatchEvent("event.sdl", e);
+            std::shared_ptr<SDLEvent> e = make_shared<SDLEvent>(*payload);
+            this->dispatcher.dispatchEvent("event.sdl", e);
+        }
     }
 }
 

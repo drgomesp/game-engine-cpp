@@ -4,6 +4,7 @@
 #include <vector>
 #include <glm/vec2.hpp>
 
+#include <Fibula/EventDispatcher/Cargo.hpp>
 #include <Fibula/Graphics/TileMapLayer.hpp>
 
 namespace Fibula {
@@ -11,8 +12,9 @@ namespace Fibula {
 
         using namespace std;
         using ivec2 = glm::ivec2;
+        using Cargo = Fibula::EventDispatcher::Cargo;
 
-        class TileMap : public Drawable
+        class TileMap : public Drawable, public Cargo
         {
         protected:
             const string &name;
@@ -25,6 +27,14 @@ namespace Fibula {
             void addLayer(shared_ptr<TileMapLayer> layer);
             void draw(SDL_Renderer* renderer) override;
             void cleanUp(SDL_Renderer* renderer) override;
+
+            vector<shared_ptr<TileMapLayer>> &getLayers()
+            {
+                return layers;
+            }
+
+            virtual ~TileMap()
+            { }
         };
     }
 }

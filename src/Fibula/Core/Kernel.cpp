@@ -2,7 +2,7 @@
 #include <iostream>
 
 #include <glm/vec2.hpp>
-#include "../../../include/Fibula/Core/Kernel.hpp"
+#include <Fibula/Core/Kernel.hpp>
 
 using namespace glm;
 using namespace std;
@@ -16,6 +16,10 @@ void Kernel::addListener(const std::string &eventName, std::shared_ptr<Listener>
 
 void Kernel::bootstrap()
 {
+    SDL_GL_SetAttribute( SDL_GL_CONTEXT_MAJOR_VERSION, 4 );
+    SDL_GL_SetAttribute( SDL_GL_CONTEXT_MINOR_VERSION, 1 );
+    SDL_GL_SetAttribute( SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE );
+
     this->dispatcher = make_shared<Dispatcher>();
     this->window = make_shared<Window>(
         "Fibula Engine :: v1.0.0",
@@ -27,7 +31,7 @@ void Kernel::bootstrap()
         throw runtime_error("Failed to create window");
     }
 
-    cout << "Engine successfully started" << endl;
+    printf("Engine successfully started :: OpenGL %s\n", glGetString(GL_VERSION));
 
     this->booted = true;
 }

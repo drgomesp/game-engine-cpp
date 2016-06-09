@@ -5,8 +5,6 @@
 
 #include <Fibula/Graphics/TileSet.hpp>
 #include <Fibula/Graphics/TileMap.hpp>
-#include <Fibula/Graphics/TileMapLayer.hpp>
-#include <Fibula/Graphics/Texture.hpp>
 
 using namespace glm;
 using namespace std;

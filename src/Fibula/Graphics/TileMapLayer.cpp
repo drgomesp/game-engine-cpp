@@ -9,33 +9,34 @@ using namespace Fibula::Graphics;
 void TileMapLayer::draw(SDL_Renderer* renderer)
 {
     for (shared_ptr<Tile> tile : this->tiles) {
-        // Note(Daniel): Tiled Map Editor implementation detail (start from 1 instead of 0)
-        int position = tile->getId() - 1;
-
-        int tileWidth = tile->getSize().x;
-        int tileHeight = tile->getSize().y;
-        int tilePositionX = tile->getPosition().y;
-        int tilePositionY = tile->getPosition().x;
-
-        ivec2 coordinates = this->tileSet->getTileCoordinates(position);
-
-        SDL_Rect clipRect = { coordinates.x, coordinates.y, tileWidth, tileHeight };
-        SDL_Rect renderRect = { tilePositionX * tileHeight, tilePositionY * tileWidth, clipRect.w, clipRect.h };
-
-        SDL_RenderCopy(renderer, this->tileSet->getTexture()->getSDLTexture(), &clipRect, &renderRect);
+        tile->draw(renderer);
     }
 }
 
 TILE_MAP_LAYER_LOAD TileMapLayer::load(vector<int> data)
 {
-    int tWidth = this->getTileSet()->getTileSize().x;
-    int tHeight = this->getTileSet()->getTileSize().y;
-
     vector<int>::iterator it = data.begin();
 
     for (int c = 0; c < this->size.x; ++c) {
         for (int r = 0; r < this->size.y; ++r, ++it) {
-            shared_ptr<Tile> tile = make_shared<Tile>(*it, ivec2(tWidth, tHeight), ivec2(c, r));
+            // Note(Daniel): Tiled Map Editor detail (start from 1 instead of 0)
+            ivec2 coordinates = this->tileSet->getCoordinatesFromTileId(*it - 1);
+
+            SDL_Rect clipping = {
+                coordinates.x,
+                coordinates.y,
+                this->tileSet->getTileSize().x,
+                this->tileSet->getTileSize().y,
+            };
+
+            shared_ptr<Tile> tile = make_shared<Tile>(
+                *it,
+                this->getTileSet()->getTileSize(),
+                this->getTileSet()->getTexture(),
+                clipping,
+                ivec2(r, c)
+            );
+
             this->tiles.push_back(tile);
         }
     }

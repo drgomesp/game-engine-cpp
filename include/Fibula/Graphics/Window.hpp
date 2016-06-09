@@ -9,9 +9,11 @@ namespace Fibula {
 #include <string>
 #include <vector>
 
-#include <glm/vec2.hpp>
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
+#include <glm/vec2.hpp>
 
 #include <Fibula/Core/Kernel.hpp>
 #include <Fibula/EventDispatcher/Dispatcher.hpp>

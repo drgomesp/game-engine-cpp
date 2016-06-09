@@ -12,7 +12,7 @@ namespace Fibula {
             Transformable()
             { }
 
-            virtual ~Transformable()
+            ~Transformable()
             { }
         };
     }

@@ -9,13 +9,28 @@ namespace Fibula {
         class Sprite : public Drawable, public Transformable
         {
         protected:
-            Texture *texture;
+            shared_ptr<Texture> texture;
+            SDL_Rect clipping;
+            ivec2 position;
         public:
-            Sprite(Texture *texture) : texture(texture)
+            Sprite(const shared_ptr<Texture> &texture, const SDL_Rect &clipping, const ivec2 &position)
+                : texture(texture), clipping(clipping), position(position)
             { }
 
-            virtual ~Sprite()
-            { }
+            const shared_ptr<Texture> &getTexture() const
+            {
+                return texture;
+            }
+
+            const SDL_Rect &getClipping() const
+            {
+                return clipping;
+            }
+
+            const ivec2 &getPosition() const
+            {
+                return position;
+            }
         };
     }
 }
