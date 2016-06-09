@@ -36,15 +36,15 @@ namespace Fibula {
             shared_ptr<Window> window;
             shared_ptr<Dispatcher> dispatcher;
         public:
-            void addListener(const std::string &eventName, shared_ptr<Listener> listener);
-
-            virtual void registerListeners() = 0;
-
-            virtual void bootstrap();
-
             void run();
-
+            virtual void bootstrap();
             virtual void terminate();
+
+            /* Game specific functions */
+            virtual void registerListeners();
+            virtual void handleEvents();
+            virtual void handleInputs();
+            virtual void update();
         };
     }
 }

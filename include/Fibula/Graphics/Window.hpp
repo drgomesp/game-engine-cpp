@@ -17,6 +17,7 @@ namespace Fibula {
 #include <Fibula/Core/Kernel.hpp>
 #include <Fibula/EventDispatcher/Dispatcher.hpp>
 #include <Fibula/EventDispatcher/EventHandler.hpp>
+#include <Fibula/Graphics/Camera.hpp>
 #include <Fibula/Graphics/Drawable.hpp>
 
 namespace Fibula {
@@ -39,12 +40,15 @@ namespace Fibula {
             const std::string &name;
             ivec2 size;
             DrawableVector drawables;
+            shared_ptr<Camera> camera;
 
         public:
             Window(const std::string &name, const ivec2 &size, Dispatcher &dispatcher);
 
             virtual int setUp(Kernel *kernel);
             virtual void handleEvents() override;
+            virtual void handleInputs();
+            virtual void update();
             virtual void draw(SDL_Renderer* renderer = nullptr) override;
             virtual void cleanUp(SDL_Renderer* renderer = nullptr) override;
 

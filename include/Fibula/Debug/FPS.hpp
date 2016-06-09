@@ -2,7 +2,7 @@
 
 namespace Fibula {
     namespace Debug {
-        class FPSCounter
+        class FPS
         {
         public:
             static void calculate(float &fps, float &frameTime);

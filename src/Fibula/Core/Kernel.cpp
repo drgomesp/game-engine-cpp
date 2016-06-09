@@ -3,18 +3,13 @@
 
 #include <glm/vec2.hpp>
 #include <Fibula/Core/Kernel.hpp>
-#include <Fibula/Debug/FPSCounter.hpp>
+#include <Fibula/Debug/FPS.hpp>
 
 using namespace glm;
 using namespace std;
 using namespace Fibula::Core;
 using namespace Fibula::Debug;
 using namespace Fibula::EventDispatcher;
-
-void Kernel::addListener(const std::string &eventName, std::shared_ptr<Listener> listener)
-{
-    this->dispatcher->addListener(eventName, listener);
-}
 
 void Kernel::bootstrap()
 {
@@ -46,15 +41,36 @@ void Kernel::run()
     this->window->setUp(this);
 
     while (this->running) {
-        FPSCounter::calculate(this->fps, this->frameTime);
+        FPS::calculate(this->fps, this->frameTime);
         printf("FPS: %f\n", this->fps);
 
+        this->handleEvents();
+        this->handleInputs();
+        this->update();
         this->window->draw();
-        //this->window->handleInputs();
-        this->window->handleEvents();
     }
 
     this->window->cleanUp();
+}
+
+void Kernel::registerListeners()
+{
+
+}
+
+void Kernel::handleEvents()
+{
+    this->window->handleEvents();
+}
+
+void Kernel::handleInputs()
+{
+    this->window->handleInputs();
+}
+
+void Kernel::update()
+{
+    this->window->update();
 }
 
 void Kernel::terminate()

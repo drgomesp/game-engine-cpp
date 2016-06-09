@@ -65,6 +65,8 @@ Window::Window(const string &name, const ivec2 &size, Dispatcher &dispatcher)
     }
 
     SDL_SetRenderDrawColor(this->renderer, 255, 255, 255, 255);
+
+
     SDL_RenderClear(this->renderer);
     SDL_RenderPresent(this->renderer);
 }
@@ -94,6 +96,7 @@ void Window::handleEvents()
     while (SDL_PollEvent(&event)) {
         for (shared_ptr<Drawable> drawable : this->drawables) {
             std::shared_ptr<SDLPayload> payload = make_shared<SDLPayload>(event);
+
             if (Cargo *cargo = dynamic_cast<Cargo *>(drawable.get())) {
                 payload->setCargo(cargo);
             } else {
@@ -104,6 +107,16 @@ void Window::handleEvents()
             this->dispatcher.dispatchEvent("event.sdl", e);
         }
     }
+}
+
+void Window::handleInputs()
+{
+
+}
+
+void Window::update()
+{
+
 }
 
 void Window::cleanUp(SDL_Renderer* renderer)
