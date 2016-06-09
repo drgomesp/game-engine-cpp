@@ -54,7 +54,7 @@ set(SOURCE_FILES
     src/demo-game/Listeners/SDL/MousePositionListener.hpp
     src/demo-game/Core/Kernel.cpp
     src/demo-game/Core/Kernel.cpp src/demo-game/Core/Kernel.hpp
-    include/Fibula/Graphics/Camera.hpp include/Fibula/Debug/FPS.hpp src/Fibula/Debug/FPS.cpp src/Fibula/Graphics/Camera.cpp)
+    include/Fibula/Graphics/Camera.hpp include/Fibula/Debug/FPS.hpp src/Fibula/Debug/FPS.cpp src/Fibula/Graphics/Camera.cpp include/Fibula/Core/State.hpp include/Fibula/Core/StateManager.hpp src/Fibula/Core/StateManager.cpp src/Fibula/Core/StateManager.hpp)
 
 add_executable(Fibula ${SOURCE_FILES})
 
