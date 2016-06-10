@@ -39,7 +39,6 @@ set(SOURCE_FILES
     include/Fibula/Graphics/Sprite.hpp
     include/Fibula/Graphics/Transformable.hpp
     include/Fibula/Graphics/Transform.hpp
-    include/Fibula/Graphics/Camera.hpp
     include/Fibula/Debug/FPS.hpp
     include/Fibula/Core/State.hpp
     include/Fibula/Core/StateManager.hpp
@@ -59,7 +58,7 @@ set(SOURCE_FILES
     src/demo-game/Core/Kernel.cpp
     src/demo-game/Core/Kernel.cpp
     src/demo-game/Core/Kernel.hpp
-    src/Fibula/Debug/FPS.cpp src/Fibula/Graphics/Camera.cpp
+    src/Fibula/Debug/FPS.cpp
     src/Fibula/Core/StateManager.cpp
     src/Fibula/Graphics/Sprite.cpp)
 

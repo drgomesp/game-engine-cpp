@@ -17,7 +17,6 @@ namespace Fibula {
 #include <Fibula/Core/Kernel.hpp>
 #include <Fibula/EventDispatcher/Dispatcher.hpp>
 #include <Fibula/EventDispatcher/EventHandler.hpp>
-#include <Fibula/Graphics/Camera.hpp>
 #include <Fibula/Graphics/Drawable.hpp>
 
 namespace Fibula {
