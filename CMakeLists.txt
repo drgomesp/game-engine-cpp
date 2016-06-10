@@ -39,6 +39,10 @@ set(SOURCE_FILES
     include/Fibula/Graphics/Sprite.hpp
     include/Fibula/Graphics/Transformable.hpp
     include/Fibula/Graphics/Transform.hpp
+    include/Fibula/Graphics/Camera.hpp
+    include/Fibula/Debug/FPS.hpp
+    include/Fibula/Core/State.hpp
+    include/Fibula/Core/StateManager.hpp
 
     src/Fibula/Bridge/SDLEventListener.cpp
     src/Fibula/Core/Kernel.cpp
@@ -53,8 +57,11 @@ set(SOURCE_FILES
     src/demo-game/Listeners/SDL/MousePositionListener.cpp
     src/demo-game/Listeners/SDL/MousePositionListener.hpp
     src/demo-game/Core/Kernel.cpp
-    src/demo-game/Core/Kernel.cpp src/demo-game/Core/Kernel.hpp
-    include/Fibula/Graphics/Camera.hpp include/Fibula/Debug/FPS.hpp src/Fibula/Debug/FPS.cpp src/Fibula/Graphics/Camera.cpp include/Fibula/Core/State.hpp include/Fibula/Core/StateManager.hpp src/Fibula/Core/StateManager.cpp src/Fibula/Core/StateManager.hpp)
+    src/demo-game/Core/Kernel.cpp
+    src/demo-game/Core/Kernel.hpp
+    src/Fibula/Debug/FPS.cpp src/Fibula/Graphics/Camera.cpp
+    src/Fibula/Core/StateManager.cpp
+    src/Fibula/Graphics/Sprite.cpp)
 
 add_executable(Fibula ${SOURCE_FILES})
 

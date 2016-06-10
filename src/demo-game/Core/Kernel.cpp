@@ -25,10 +25,10 @@ void Game::Core::Kernel::bootstrap()
     // Initialize the engine kernel
     EngineKernel::bootstrap();
 
-    shared_ptr<Texture> groundTexture = make_shared<Texture>(this->window->getRenderer(), "resources/mountain_landscape.png");
+    shared_ptr<Texture> texture = make_shared<Texture>(this->window->getRenderer(), "resources/mountain_landscape_grid.png");
 
     // Build the game stuff
-    shared_ptr<TileSet> tileSet = make_shared<TileSet>(groundTexture, ivec2(16, 16), ivec2(32, 32), ivec2(512, 512));
+    shared_ptr<TileSet> tileSet = make_shared<TileSet>(texture, ivec2(16, 16), ivec2(32, 32), ivec2(512, 512));
     shared_ptr<TileMap> tileMap = make_shared<TileMap>("Demo TileMap", ivec2(15, 24));
     shared_ptr<TileMapLayer> ground = make_shared<TileMapLayer>("Ground", vec2(15, 24), true, 1.0f, tileSet);
     shared_ptr<TileMapLayer> mountains = make_shared<TileMapLayer>("Mountains", vec2(15, 24), true, 1.0f, tileSet);
@@ -41,4 +41,8 @@ void Game::Core::Kernel::bootstrap()
     tileMap->addLayer(mountains, mountainsData);
 
     this->window->addDrawable(tileMap);
+
+//    SDL_Rect clipping = {128, 128, 64, 64};
+//    auto sprite = make_shared<Sprite>(texture, clipping, ivec2(64, 64), ivec2(0, 0));
+//    this->window->addDrawable(sprite);
 }

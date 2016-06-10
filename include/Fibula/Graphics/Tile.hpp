@@ -10,19 +10,15 @@ namespace Fibula {
         {
         protected:
             const int id;
-            const ivec2 &size;
         public:
             Tile(
                 const int id,
-                const ivec2 &size,
                 const shared_ptr<Texture> &texture,
-                const SDL_Rect &clipping,
+                const SDL_Rect &rectangle,
+                const ivec2 &size,
                 const ivec2 &position
-            ) : id(id), size(size), Sprite(texture, clipping,position)
+            ) : id(id), Sprite(texture, rectangle, size, position)
             { }
-
-            void draw(SDL_Renderer *renderer) override;
-            void cleanUp(SDL_Renderer *renderer) override;
         };
     }
 }

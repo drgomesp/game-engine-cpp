@@ -10,12 +10,20 @@ namespace Fibula {
         {
         protected:
             shared_ptr<Texture> texture;
-            SDL_Rect clipping;
+            SDL_Rect rectangle;
+            ivec2 size;
             ivec2 position;
         public:
-            Sprite(const shared_ptr<Texture> &texture, const SDL_Rect &clipping, const ivec2 &position)
-                : texture(texture), clipping(clipping), position(position)
+            Sprite(
+                const shared_ptr<Texture> &texture,
+                const SDL_Rect &rectangle,
+                const ivec2 &size,
+                const ivec2 &position
+            ) : texture(texture), rectangle(rectangle), size(size), position(position)
             { }
+
+            virtual void draw(SDL_Renderer *renderer) override;
+            virtual void cleanUp(SDL_Renderer *renderer) override;
         };
     }
 }

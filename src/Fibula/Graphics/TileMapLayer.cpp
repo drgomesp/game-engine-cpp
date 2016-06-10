@@ -1,8 +1,5 @@
 #include <Fibula/Graphics/TileMapLayer.hpp>
 
-#include <SDL2/SDL_opengl.h>
-#include <iostream>
-
 using namespace std;
 using namespace Fibula::Graphics;
 
@@ -19,7 +16,7 @@ bool TileMapLayer::load(vector<int> data)
 
     for (int c = 0; c < this->size.x; ++c) {
         for (int r = 0; r < this->size.y; ++r, ++it) {
-            // Note(Daniel): Tiled Map Editor detail (start from 1 instead of 0)
+            // NOTE: Tiled Map Editor detail (start from 1 instead of 0)
             ivec2 coordinates = this->tileSet->getCoordinatesFromId(*it - 1);
 
             SDL_Rect clipping = {
@@ -31,9 +28,9 @@ bool TileMapLayer::load(vector<int> data)
 
             shared_ptr<Tile> tile = make_shared<Tile>(
                 *it,
-                this->getTileSet()->getTileSize(),
                 this->getTileSet()->getTexture(),
                 clipping,
+                this->getTileSet()->getTileSize(),
                 ivec2(r, c)
             );
 

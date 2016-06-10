@@ -27,7 +27,6 @@ namespace Fibula {
             { }
 
             ivec2 getCoordinatesFromId(int id);
-            int getIdFromCoordinates(const ivec2 &coordinates);
 
             const shared_ptr<Texture> &getTexture() const
             {

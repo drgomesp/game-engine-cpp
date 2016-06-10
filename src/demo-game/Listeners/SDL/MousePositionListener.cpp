@@ -18,9 +18,7 @@ LISTENER_RESPONSE MousePositionListener::handleEvent(
             case SDL_MOUSEMOTION:
                 SDL_MouseMotionEvent m = sdlPayload.getOriginalEvent().motion;
 
-                for (shared_ptr<TileMapLayer> layer : tileMap->getLayers()) {
-                    layer->getTileSet()->getIdFromCoordinates(ivec2(m.x, m.y));
-                }
+                // Track mouse position
 
                 return LISTENER_RESPONSE::SUCCESS;
         }

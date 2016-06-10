@@ -16,8 +16,3 @@ ivec2 TileSet::getCoordinatesFromId(int id)
 
     return coordinates;
 }
-
-int TileSet::getIdFromCoordinates(const ivec2 &coordinates)
-{
-    printf("[x:%i][y:%i]\n", coordinates.x, coordinates.y);
-}

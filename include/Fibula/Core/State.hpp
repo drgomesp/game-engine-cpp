@@ -5,7 +5,7 @@
 #include <Fibula/Graphics/Drawable.hpp>
 
 namespace Fibula {
-    namespace State {
+    namespace Core {
 
         using Drawable = Fibula::Graphics::Drawable;
         using EventHandler = Fibula::EventDispatcher::EventHandler;
